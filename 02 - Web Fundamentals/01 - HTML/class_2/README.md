@@ -1,2 +1,2 @@
 - # Fix Indentation
-Fix indetantion, check `01 - assigment` and `02 - assigment`
+Fix indetantion, check `01 - assignment` and `02 - assignment`
