@@ -3,12 +3,13 @@ This repository contains the assignments related to `Coding Dojo - MERN Bootcamp
 
 ### Assigment List:
 - Pre-Bootcamp Web Development.
-- Web Fundamentals.
-  - HTML
-  - CSS
-  - JS
-- MERN
-  - React
+- [Web Fundamentals](https://github.com/PanyPy/coding-dojo-mern/tree/main/02%20-%20Web%20Fundamentals)
+  - [HTML](https://github.com/PanyPy/coding-dojo-mern/tree/main/02%20-%20Web%20Fundamentals/01%20-%20HTML)
+  - [CSS](https://github.com/PanyPy/coding-dojo-mern/tree/main/02%20-%20Web%20Fundamentals/02%20-%20CSS)
+  - [JS](https://github.com/PanyPy/coding-dojo-mern/tree/main/02%20-%20Web%20Fundamentals/03%20-%20JS)
+- [MERN](https://github.com/PanyPy/coding-dojo-mern/tree/main/03%20-%20MERN)
+  - [JavaScript](https://github.com/PanyPy/coding-dojo-mern/tree/main/03%20-%20MERN/01%20-%20JavaScript)
+  - [React](https://github.com/PanyPy/coding-dojo-mern/tree/main/03%20-%20MERN/02%20-%20React)
   - Express
   - MongoDB
   - Full Stack MERN
