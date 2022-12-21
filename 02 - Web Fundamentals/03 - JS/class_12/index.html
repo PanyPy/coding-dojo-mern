@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.cdnfonts.com/css/roboto" rel="stylesheet">
+</head>
+<body>
+
+  <div class="nav-container">
+    <div class="nav">
+      <h1 class="nav-title">Dojonary</h1>
+      <input type="text" />
+      <button onclick="onLogout(this)">Login</button>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="main">
+      <!-- diccionary Section -->
+      <div class="diccionary">
+        <div class="diccionary-details">
+          <h2>ninja</h2>
+          <p><em>noun</em></p>
+          <p>Plural: <em>ninjas</em></p>
+          <button id="0" class="like" onclick="onClicklikeNinja(this.id)"><a id="text_0">0</a> likes</button>
+        </div>
+        <div class="diccionary-definition">
+          A practitioner skilled in the <a href="#">Japanese</a> art of <a href="https://en.wikipedia.org/wiki/Ninjutsu" target="_blank">ninjutsu</a>
+        </div>
+      </div>
+
+      <!-- diccionary Section -->
+      <div class="diccionary">
+        <div class="diccionary-details">
+          <h2>ninja</h2>
+          <p><em>noun</em></p>
+          <p>Plural: <em>ninjas</em></p>
+          <button id="1" class="like" onclick="onClicklikeNinja(this.id)"><a id="text_1">0</a> likes</button>
+        </div>
+        <div class="diccionary-definition">
+          A <a href="#">programmer</a> who breaks down problems with <a href="#">zen</a>-like focus
+        </div>
+      </div>
+    </div>
+    
+    <!-- sidebar Section -->
+    <div class="sidebar">
+        <p>Dojonary is defined by <strong>YOU</strong></p>
+        <button class="green" onclick="onAddDefinition(this)">Add Definition</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

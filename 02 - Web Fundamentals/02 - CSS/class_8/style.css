@@ -1,0 +1,48 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+}
+body {
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  background-color: #f2f2fa;
+  justify-content: center;
+  margin: 100px auto;
+  width: 75%;
+  overflow: hidden;
+}
+.top-nav {
+  background-color: #17a2b8;
+  height: 150px;
+}
+
+.img-container {
+  display: flex;
+  align-items: center;
+}
+
+.img-container a, .img-container p {
+  display: inline;
+  margin-left: 5px;
+}
+.card {
+  margin: 0px 0px 30px 30px;
+}
+.card-logo {
+  border-radius: 50%;
+  margin-top: -55px;
+  border: 5px solid white;
+  filter: invert(1);
+}
+
+.card .content {
+  margin-top: 10px;
+}
+
+.card .content > p{
+  margin: 10px 0;
+}

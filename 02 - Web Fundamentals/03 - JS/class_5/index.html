@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.cdnfonts.com/css/roboto" rel="stylesheet">
+</head>
+<body>
+
+  <div class="top-nav">
+    <h3>Network</h3>
+    <h2 class="title">Your Feed</h2>
+  </div>
+  <div class="container">
+    <div class="sidebar">
+      <img width="100px" src="img/user-circle.png"></img>
+      <a href="#">Add on avatar</a>
+      <h3>James Doe</h3>
+    </div>
+
+    <div class="main">
+      <!-- user Section -->
+      <div class="user">
+        <div class="user-nav">
+          <h2>Some User</h2>
+          <h3><span id="text_0"></span> likes</h3>
+          <button class="like" onclick="onLike(0)"> likes</button>
+        </div>
+        <p class="user-details">This is some filler text, it can say anything we like</p>
+      </div>
+
+      <!-- user Section -->
+      <div class="user">
+        <div class="user-nav">
+          <h2>Some User</h2>
+          <h3><span id="text_1"></span> likes</h3>
+          <button class="like" onclick="onLike(1)"> likes</button>
+        </div>
+        <p class="user-details">This is some filler text, it can say anything we like</p>
+      </div>
+
+      <!-- user Section -->
+      <div class="user">
+        <div class="user-nav">
+          <h2>Some User</h2>
+          <h3><span id="text_2"></span> likes</h3>
+          <button class="like" onclick="onLike(2)"> likes</button>
+        </div>
+        <p class="user-details">This is some filler text, it can say anything we like</p>
+      </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

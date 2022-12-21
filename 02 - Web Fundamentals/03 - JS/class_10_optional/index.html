@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pacman Demo</title>
+  <style type="text/css">
+    body {
+      background-color: black;
+      margin: 0px;
+      /* padding: 0px; */
+    }
+    div.row {
+      height: 20px;
+    }
+    div.row div {
+      display: inline-block;
+      height: 20px;
+      width: 20px;
+    }
+    div.brick {
+      background-color: blue;
+    }
+    div.cherry {
+      background-image: url('images/cherry.png');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      height: 20px;
+      width: 20px;
+    }
+    div.coin {
+      background-image: url('images/coin.gif');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+    }
+    div.empty {}
+    div.char {
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      height: 20px;
+      position: absolute;
+      width: 20px;
+    }
+    div.pacman {
+      background-image: url('images/pacman.gif');
+    }
+    div.ghost {
+      background-image: url('images/ghost.png');
+    }
+    div.score {
+      border: 1px solid white;
+      color: white;
+      height: 30px;
+      margin-top: 10px;
+      padding: 7px ;
+      text-align: center;
+      left: 220px;
+      /* position: absolute; */
+      /* top: 20px; */
+      width: 100px;
+    }
+    div#game_status {
+      color: white;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="world"></div>
+  <div id="pacman" class="char pacman" ></div>
+  <div id="ghost" class="char ghost"></div>
+  <div id="pacman2" class="char pacman" style="filter: hue-rotate(90deg);"></div>
+  <div class="score">Score <a id="score">0</a></div>
+  <h3 style="color: white;">Life(s): <strong id="current_lifes">3</strong></h3>
+  <div id="game_status">Let's go!...</div>
+  <div style="color: white;">User 2 moves with: a,s,d,w. (Please, first play pre-bootcamp Pacman)</div>
+
+  <script>
+    const ghost = { x: 23, y:10};
+    const pacman = { x: 1, y:1};
+    const pacman2 = { x: 1, y:2};
+    let gameOver = false;
+    let currentLifes = 3;
+    let score = 0;
+    const worldWidth = Math.floor(Math.random() * 15) + 10;
+    // const worldPattern = {0: 'empty', 1: 'coin', 2: 'wall'};
+    const world = [
+      [2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2],
+      [2,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2],
+      [2,0,2,2,2,3,1,1,2,2,2,2,2,2,2,2,2,2,2,1,1,1,1,1,2],
+      [2,1,2,0,0,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2],
+      [2,1,2,0,0,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2],
+      [2,1,2,2,2,3,1,2,2,2,1,2,2,2,2,1,2,1,1,1,2,1,1,1,2],
+      [2,1,2,1,1,1,1,2,0,2,1,2,3,3,2,1,2,1,1,1,2,1,1,1,2],
+      [2,1,2,1,1,1,1,2,2,2,1,2,1,1,2,1,1,2,2,2,1,1,1,1,2],
+      [2,1,2,1,1,1,1,1,3,2,1,2,1,1,2,1,1,3,2,3,1,1,1,1,2],
+      [2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,1,1,1,1,1,2],
+      [2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2],
+      [2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2],
+    ];
+
+
+    const drawWorld =() => {
+      let output = "";
+
+      world.forEach(line => {
+        output += `<div class="row">`;
+        line.forEach(block => {
+          if(block === 3) {
+            output += `<div class="cherry"></div>`;
+          } else if(block === 2) {
+            output += `<div class="brick"></div>`;
+          } else if(block == 1) {
+            output += `<div class="coin"></div>`;
+          } else if(block == 0) {
+            output += `<div class="empty"></div>`;
+          }
+        });
+        output +=`</div>`;
+      });
+
+      document.getElementById("world").innerHTML = output;
+    }
+    drawWorld();
+
+    const drawGhost = () => {
+      document.getElementById('ghost').style.top = `${ghost.y*20}px`;
+      document.getElementById('ghost').style.left = `${ghost.x*20}px`;
+    }
+    drawGhost();
+
+    const drawPacman = () => {
+      document.getElementById("pacman").style.left = `${pacman.x*20}px`;
+      document.getElementById("pacman").style.top = `${pacman.y*20}px`;
+      document.getElementById("pacman2").style.left = `${pacman2.x*20}px`;
+      document.getElementById("pacman2").style.top = `${pacman2.y*20}px`;
+    }
+    drawPacman();
+
+    document.onkeydown = (e) => {
+      if(!gameOver) {
+        if(e.keyCode === 37 && world[pacman.y][pacman.x-1] != 2) {
+          document.getElementById("pacman").style.rotate = "180deg";
+          pacman.x--;
+        } else if(e.keyCode === 39 && world[pacman.y][pacman.x+1] != 2) {
+          pacman.x++;
+          document.getElementById("pacman").style.rotate = "0deg";
+        } else if(e.keyCode === 38 && world[pacman.y-1][pacman.x] != 2) {
+          pacman.y--;
+          document.getElementById("pacman").style.rotate = "-90deg";
+        } else if(e.keyCode === 40 && world[pacman.y+1][pacman.x] != 2) {
+          document.getElementById("pacman").style.rotate = "90deg";
+          pacman.y++;
+        }
+
+        if(e.keyCode === 65 && world[pacman2.y][pacman2.x-1] != 2) {
+          document.getElementById("pacman2").style.rotate = "180deg";
+          pacman2.x--;
+        } else if(e.keyCode === 68 && world[pacman2.y][pacman2.x+1] != 2) {
+          pacman2.x++;
+          document.getElementById("pacman2").style.rotate = "0deg";
+        } else if(e.keyCode === 87 && world[pacman2.y-1][pacman2.x] != 2) {
+          pacman2.y--;
+          document.getElementById("pacman2").style.rotate = "-90deg";
+        } else if(e.keyCode === 83 && world[pacman2.y+1][pacman2.x] != 2) {
+          document.getElementById("pacman2").style.rotate = "90deg";
+          pacman2.y++;
+        }
+
+        // calculate Score
+        if([1,3].includes(world[pacman.y][pacman.x]) ||
+        [1,3].includes(world[pacman2.y][pacman2.x])){
+          score+= world[pacman.y][pacman.x] == 1 ? 5 : 50;
+          score+= world[pacman2.y][pacman2.x] == 1 ? 5 : 50;
+          world[pacman.y][pacman.x] = 0;
+          world[pacman2.y][pacman2.x] = 0;
+          displayScore();
+        }
+        checkGameOver();
+        drawWorld();
+        drawPacman();
+      }
+    }
+    const checkGameOver = () => {
+      // check WIN
+      if(world.flatMap(w => w).filter(w => w==1||w==3).length == 0) {
+        document.getElementById('game_status').innerHTML = 'WINNER!';
+        gameOver = true;
+        clearInterval(ghostInterval);
+      } else if(pacman.x === ghost.x && pacman.y === ghost.y ||
+      pacman2.x === ghost.x && pacman2.y === ghost.y){
+        currentLifes--;
+        if(currentLifes === 0) {
+          gameOver = true;
+          document.getElementById('game_status').innerHTML = 'GAME OVER!';
+          clearInterval(ghostInterval);
+        } else {
+          pacman.x = 1;
+          pacman.y = 1;
+          pacman2.x = 1;
+          pacman2.y = 2;
+          ghost.x = 23;
+          ghost.y = 10;
+          drawPacman();
+          drawWorld();
+          drawGhost();
+        }
+        document.getElementById('current_lifes').innerHTML = currentLifes;
+      }
+    }
+
+    const displayScore = () => {
+      document.getElementById('score').innerHTML = score;
+    }
+    const moveGhost = () => {
+      const currentDistance = Math.sqrt(Math.pow((pacman.y - ghost.y),2) + Math.pow((pacman.x - ghost.x),2));
+      const currentDistance2 = Math.sqrt(Math.pow((pacman2.y - ghost.y),2) + Math.pow((pacman2.x - ghost.x),2));
+      // 0 -> keep position, 1 -> move left, 2 -> move right, 3 -> move up, 4 -> move down
+      let nextX = ghost.x;
+      let nextY = ghost.y;
+      let nextDistance = Math.min(currentDistance, currentDistance2);
+
+      const leftDistancePacman = Math.sqrt(Math.pow((pacman.y - ghost.y),2) + Math.pow((pacman.x - ghost.x-1),2));
+      const leftDistancePacman2 = Math.sqrt(Math.pow((pacman2.y - ghost.y),2) + Math.pow((pacman2.x - ghost.x-1),2));
+      const maxLeft = Math.min(leftDistancePacman, leftDistancePacman2);
+      if((maxLeft > nextDistance ) && world[ghost.y][ghost.x-1] !== 2) {
+        nextX = ghost.x-1;
+        nextY = ghost.y;
+        nextDistance = maxLeft;
+      }
+      
+      const rightDistancePacman = Math.sqrt(Math.pow((pacman.y - ghost.y),2) + Math.pow((pacman.x - ghost.x+1),2));
+      const rightDistancePacman2 = Math.sqrt(Math.pow((pacman2.y - ghost.y),2) + Math.pow((pacman2.x - ghost.x+1),2));
+      const maxRight = Math.min(rightDistancePacman, rightDistancePacman2);
+      if((maxRight > nextDistance) && world[ghost.y][ghost.x+1] !== 2) {
+        nextX = ghost.x+1;
+        nextY = ghost.y;
+        nextDistance = maxRight;
+      }
+
+      const upDistancePacman = Math.sqrt(Math.pow((pacman.y - ghost.y-1),2) + Math.pow((pacman.x - ghost.x),2));
+      const upDistancePacman2 = Math.sqrt(Math.pow((pacman2.y - ghost.y-1),2) + Math.pow((pacman2.x - ghost.x),2));
+      const maxUp = Math.min(upDistancePacman, upDistancePacman2);
+      if((maxUp > nextDistance) && world[ghost.y-1][ghost.x] !== 2) {
+        nextX = ghost.x;
+        nextY = ghost.y-1;
+        nextDistance = maxUp;
+      }
+
+      const downDistancePacman = Math.sqrt(Math.pow((pacman.y - ghost.y+1),2) + Math.pow((pacman.x - ghost.x),2));
+      const downDistancePacman2 = Math.sqrt(Math.pow((pacman2.y - ghost.y+1),2) + Math.pow((pacman2.x - ghost.x),2));
+      const maxDown = Math.min(downDistancePacman, downDistancePacman2);
+      if((maxDown > nextDistance) && world[ghost.y+1][ghost.x] !== 2) {
+        nextX = ghost.x;
+        nextY = ghost.y+1;
+        nextDistance = maxDown;
+      }
+
+      ghost.x = nextX;
+      ghost.y = nextY;
+      drawGhost();
+      checkGameOver();
+    }
+  const ghostInterval = setInterval(moveGhost, 500);
+  </script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Form</title>
+  </head>
+  <body>
+    <style>
+      table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+    </style>
+    <h1>Jerson Paniagua</h1>
+    <div>
+      <img src="img/user_logo.png" alt="user profile image" />
+      <p>
+        <a href="https://github.com/PanyPy"><object data="icon/github.svg" width="20" height="20"> </object>my github</a> | 
+        <a href="https://www.linkedin.com/in/jerson-paniagua/"><object data="icon/linkedIn.svg" width="20" height="20"> </object>my linkedIn</a> | 
+        <a href="mailto:diazpany@gmail.com"><object data="icon/envelope.svg" width="20" height="20"> </object>email</a>
+    </div>
+
+    <h3>Technologies</h3>
+    <table>
+      <tr>
+          <th>Front-End</th>
+          <th>Python</th>
+          <th>JavaScript</th>
+          <th>Database</th>
+          <th>Concepts</th>
+      </tr>
+      <tr>
+          <td>HTML5</td>
+          <td>Django</td>
+          <td>Express</td>
+          <td>MySQL</td>
+          <td>AJAX</td>
+      </tr>
+      <tr>
+        <td>CSS3</td>
+        <td>Flask</td>
+        <td>Mongoose</td>
+        <td>MongoDB</td>
+        <td>OOP</td>
+      </tr>
+      <tr>
+        <td>Bootstrap</td>
+        <td>Unittest</td>
+        <td>React</td>
+        <td></td>
+        <td>REST</td>
+      </tr>
+    </table>
+
+    <h3>Social Snakes</h3>
+    <div>
+      <img src="img/code_block.png" alt="code block image" />
+      <p>Social Media App made in Python - <a href="#">code</a> | <a href="#">deployed</a></p>
+    </div>
+
+    <h3>Contact Me</h3>
+    <form action="/process" method="post">
+      <div>
+          <label>Name:</label>
+          <input type="text" name="name" placeholder="Name..." >
+
+          <label>Email:</label>
+          <input type="text" name="email" placeholder="Your email..." >
+      </div>
+
+      <div>
+        <label>Message:</label>
+        <textArea name="description" placeholder="description..." style="display: block;"></textArea>
+      </div>
+
+      <input type="submit" value="Send Message" >
+  </form>
+  </body>
+</html>

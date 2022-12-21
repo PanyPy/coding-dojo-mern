@@ -1,0 +1,94 @@
+/* CSS reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Clase fixed-width container que se "autocentrará" a sí misma */
+.container {
+  width: 1200px;
+  margin: 0 auto;
+}
+button {
+  display: block;
+}
+
+.btn{
+  display: block;
+  border-style: solid;
+  border-color: black;
+  padding: 3px 10px;
+  color: white;
+  font-weight: 100;
+  font-style: inherit;
+  background-color: #2a78e4;
+  box-shadow: 2px 2px black;
+  font-size: 0.4em;
+}
+
+.row {
+  display: flex;
+}
+
+.col, .col-2, .col-3 {
+  background-color: #64a2aa;
+  color: white;
+  flex: 1;
+  margin: 10px;
+  padding: 20px;
+}
+
+.col-2 {
+  flex: 2;
+}
+
+.col-3 {
+  flex: 3;
+}
+
+.nav {
+  background-color: #333;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  margin: 5px;
+}
+
+.nav-links {
+  align-items: center;
+  display: flex;
+  margin-right: 10px;
+}
+.nav-links a{
+  color: #ccc;
+  text-decoration: none;
+}
+
+.nav-links a{
+  color: gra;
+  text-decoration: none;
+}
+
+.nav-links li{
+  list-style-type: none;
+  margin: 0 10px;
+}
+
+.nav-links .active{
+  color: white;
+}
+
+.nav-title {
+  display: flex;
+  padding-left: 20px;
+}
+
+.nav-links button {
+  background-color: skyblue;
+  border: 2px solid black;
+  box-shadow: 4px 4px 0px 1px black;
+  color: white;
+  height: 35px;
+  padding: 0 10px;
+}

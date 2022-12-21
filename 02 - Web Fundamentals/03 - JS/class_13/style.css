@@ -1,0 +1,125 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: #f3f3f3;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.top {
+    background-color: #333;
+    height: 75px;
+    border-top: 5px solid rebeccapurple;
+    color: #fff;
+}
+
+.search {
+    padding: 5px 10px;
+    font-size: 1.2rem;
+    width: 100%;
+    margin: 0 100px;
+}
+
+.btn {
+    background-color: rebeccapurple;
+    color: #fff;
+    width: 120px;
+    height: 40px;
+    border: 2px solid #000;
+    box-shadow: 4px 4px #000;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.nav-container, .flex-container {
+    width: 1080px;
+    margin: 0 auto;
+    display: flex;
+}
+
+.nav-container {
+    justify-content: space-between;
+    align-items: center;
+    height: inherit;
+}
+
+.flex-container {
+    padding: 20px;
+    background-color: #fff;
+}
+
+.col-l {
+    flex: 2;
+}
+
+.col-r {
+    flex: 1;
+    margin-left: 20px;
+}
+
+.placeholder {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.placeholder svg {
+    border-radius: 10px;
+}
+
+.row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.user {
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+}
+
+.start h1 {
+    margin-bottom: 10px;
+}
+
+.start h3 {
+    color: #333;
+    font-weight: 400;
+}
+
+.avatar-s {
+    height: 64px;
+}
+
+.user-name {
+    margin-left: 10px;
+    color: rebeccapurple;
+    font-size: 1.2rem;
+    font-weight: 900;
+    font-size: 1.2rem;
+}
+
+.sub-header {
+    font-size: 1.5rem;
+    font-weight: 900;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #999;
+}
+
+.video-small {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.vid-s {
+    width: 170px;
+    margin-right: 10px;
+}
+
+.video-title {
+    font-size: 1.2rem;
+    font-weight: 900;
+}

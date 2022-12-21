@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Dojo Weather</title>
+</head>
+<body>
+
+  <div class="nav-bar">
+    <div class="nav-container">
+      <h2 class="nav-title">Dojo Weather</h2>
+      <ul class="nav-links">
+        <li><a href="#" onclick="loadCity(this)">Burbank</a></li>
+        <li><a href="#" onclick="loadCity(this)">Chicago</a></li>
+        <li><a href="#" onclick="loadCity(this)">Dallas</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="temperature-header">
+    <div class="temperature-container">
+      <h1 id="current_city">San José</h1>
+      <div class="temperature-select">
+        <label>show temperature in </label>
+        <select onchange="updateWeather()" id="weather_unit">
+            <option value="C">°C</option>
+            <option value="F">°F</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  
+  <div class="weather-container">
+    <div class="weather-cards">
+      <div class="card">
+        <h3>Today</h3>
+        <img src="assets/some_rain.png"></img>
+        <h4>some rain</h4>
+        <div class="card-temperature">
+          <h3 class="max-temperature"></h3>
+          <h3 class="min-temperature"></h3>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Tomorrow</h3>
+        <img src="assets/some_sun.png"></img>
+        <h4>some sun</h4>
+        <div class="card-temperature">
+          <h3 class="max-temperature"></h3>
+          <h3 class="min-temperature"></h3>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Friday</h3>
+        <img src="assets/some_clouds.png"></img>
+        <h4>some clouds</h4>
+        <div class="card-temperature">
+          <h3 class="max-temperature"></h3>
+          <h3 class="min-temperature"></h3>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>Saturday</h3>
+        <img src="assets/some_sun.png"></img>
+        <h4>some sun</h4>
+        <div class="card-temperature">
+          <h3 class="max-temperature"></h3>
+          <h3 class="min-temperature"></h3>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cookie-container" id="cookie_agreement">
+    <div class="cookie-agreement">
+      <img src="assets/cookie.png"></img>
+      <div class="cookie-text">
+        <h3>Stop! Cookie time</h3>
+        <p>We use cookies (sadly not the edible ones) to personalize content and ads, to provide social media features and to analyse our traffic. <a href="#">Read more...</a></p>
+      </div>
+      <button onclick="hideCookieAgreement()">I Accept</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

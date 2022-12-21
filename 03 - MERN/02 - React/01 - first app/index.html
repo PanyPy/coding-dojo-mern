@@ -1,0 +1,21 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Hello React</title>
+  </head>
+  <body>
+    <div id="root">
+      <h1>First React page rendering...</h1>
+    </div>
+
+    <script crossorigin="" src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin="" src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script> 
+    <script>
+      const App = () => {
+          return React.createElement("h1", {}, "Our First React page has rendered");
+      };
+      ReactDOM.render(React.createElement(App), document.getElementById("root"));
+  </script>
+  </body>
+</html>
+

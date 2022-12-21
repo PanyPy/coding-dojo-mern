@@ -1,0 +1,184 @@
+<html>
+<head>
+	<title>1942 Game</title>
+
+<style type="text/css">
+	body{
+		background-color:black;
+	}
+	#container{
+		background: url('background.jpg');
+		width:1000px;
+		height:550px;
+	}
+	#hero{
+		background: url('1942.gif');
+		background-position: -85px -180px;
+		width:28px;
+		height:28px;
+		position:absolute;
+	}
+	.enemy1{
+		background: url('1942.gif');
+		background-position: -30px -10px;
+		width:28px;
+		height:28px;
+		position:absolute;
+	}
+  .enemy2{
+		background: url('1942.gif');
+		background-position: -64px -10px;
+		width:28px;
+		height:28px;
+		position:absolute;
+	}
+  .dead{
+		background: url('1942.gif');
+		background-position: -84px -40px;
+		width:28px;
+		height:28px;
+		position:absolute;
+	}
+	.bullet{
+		background: url('1942.gif');
+		background-position: -185px -400px;
+		width:18px;
+		height:18px;
+		position:absolute;
+	}
+	#score{
+		position:absolute;
+		border:10px solid red;
+		top:20px;
+		left:800px;
+		background-color:white;
+		padding:10px;
+		font-size:30px;
+		font-family: Arial;	
+	}
+</style>
+</head>
+<body>
+	<div id='container'>
+		<div id='hero' style='top:300px; left:300px;'></div>
+		<div id='enemies'></div>
+		<div id='bullets'>
+			<div class='bullet' style='top:150px; left:200px;'></div>
+			<div class='bullet' style='top:250px; left:200px;'></div>
+			<div class='bullet' style='top:350px; left:200px;'></div>
+			<div class='bullet' style='top:450px; left:200px;'></div>
+		</div>	
+	</div>
+
+	<div id='score'>0</div>
+
+<script>
+  const bullets = [];
+  const hero = {x: 300, y: 500};
+  const enemies = [
+    {class:"enemy1", x:100, y: 100},
+    {class:"enemy2", x:200, y: 100},
+    {class:"enemy1", x:300, y: 100},
+    {class:"enemy2", x:400, y: 100},
+    {class:"enemy1", x:500, y: 100},
+    {class:"enemy2", x:600, y: 100},
+    {class:"enemy1", x:700, y: 100},
+  ];
+  let score = 0;
+  const audio = new Audio('bullet.mp3');
+
+  const displayHero = () => {
+    document.getElementById('hero').style['left'] = hero.x+"px"
+    document.getElementById('hero').style['top'] = hero.y+"px"
+  }
+  displayHero();
+
+  const displayEnemies = () => {
+    let enemiesHTML = "";
+    enemies.forEach(enemy => {
+      enemiesHTML +=`<div class='${enemy.class}' style='top:${enemy.y}px; left:${enemy.x}px;'></div>`;
+    });
+    document.getElementById("enemies").innerHTML = enemiesHTML;
+  }
+
+  displayEnemies();
+  const displayBullets = () => {
+    let bulletsHTML = "";
+    bullets.forEach(bullet => {
+      bulletsHTML +=`<div class='bullet' style='top:${bullet.y}px; left:${bullet.x}px;'></div>`;
+    });
+    document.getElementById("bullets").innerHTML = bulletsHTML;
+  }
+  displayBullets();
+
+  const displayScore = () => {
+    document.getElementById("score").innerHTML = score;
+  }
+
+  const gameLoop = () => {
+    if(enemies.filter(enemy => enemy.class == "dead").length == enemies.length) {
+      clearInterval(interval);
+    }
+    displayHero();
+    moveEnemies();
+    displayEnemies();
+    moveBullets();
+    displayBullets();
+    detectCollision();
+    displayScore();
+  }
+
+  const moveEnemies = () => {
+    enemies.filter(enemy => enemy.class !== "dead").forEach(enemy => {
+      enemy.y+=5;
+      if(enemy.y > 540) {
+        enemy.y = 0;
+      }
+    })
+  }
+
+  const moveBullets = () => {
+    for(let i=0;i<bullets.length;i++){
+      bullets[i].y-=5;
+      if(bullets[i].y < 0) {
+        bullets[i] = bullets[bullets.length-1];
+        bullets.pop()
+      }
+    }
+  }
+
+  const detectCollision = () => {
+    enemies.forEach(enemy => {
+      if(enemy.class !== "dead" && Math.abs(hero.x - enemy.x) <= 20 && Math.abs(hero.y - enemy.y) < 10) {
+        enemy.class = "dead";
+        score -= 500;
+      }
+      bullets.forEach(bullet => {
+        if(enemy.class !== "dead" && Math.abs(bullet.x-6 - enemy.x) <= 10 && Math.abs(bullet.y+15 - enemy.y) < 15) {
+          enemy.class = "dead";
+          audio.play();
+          score += 10;
+        }
+      })
+    })
+  }
+
+  const interval = setInterval(gameLoop, 20);
+  document.onkeydown = e => {
+    if(e.keyCode == 37 && hero.x>0){
+      hero.x -=10;
+    } else if(e.keyCode == 39 && hero.x < 1000) {
+      hero.x +=10;
+    } else if(e.keyCode == 38 && hero.y > 300) {
+      hero.y -=10;
+    } else if(e.keyCode == 40 && hero.y < 530) {
+      hero.y +=10;
+    } else if (e.keyCode == 32) {
+      bullets.push({x: hero.x+6, y: hero.y-15});
+    }
+    displayHero();
+  }
+</script>
+
+</body>
+</html>

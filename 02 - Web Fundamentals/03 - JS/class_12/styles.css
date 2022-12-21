@@ -1,0 +1,94 @@
+* {
+  font-family: roboto;
+}
+button {
+  background-color: skyblue;
+  border: 2px solid black;
+  box-shadow: 5px 5px 0px 1px black;
+  color: white;
+  height: 35px;
+  padding: 0 10px;
+}
+
+button.like {
+  background-color: orange;
+  color: black;
+  margin: 20px 5px;
+}
+
+button.green {
+  background-color: green;
+  color: black;
+  margin: 20px 5px;
+  width: 70%;
+}
+/* Nav */
+.nav-container {
+  display: flex;
+  background: #333;
+  justify-content: center;
+}
+.nav {
+  align-items: center;
+  background-color: #333;
+  color: white;
+  display: flex;
+  height: 50px;
+  justify-content: space-between;
+  width: 75%;
+}
+.nav input {
+  width: 50%;
+}
+.nav-title {
+  margin: 0px;
+  margin-right: 5px;
+}
+
+.container {
+  /* background-color: #f2f2fa; */
+  align-items: flex-start;
+  display: flex;
+  justify-content: center;
+  margin: 50px auto auto auto;
+  width: 75%;
+  overflow: hidden;
+}
+.main {
+  flex: 2;
+}
+
+/* User card */
+.diccionary {
+  align-items: center;
+  border: 2px solid #999;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+.diccionary .diccionary-details {
+  flex: 1;
+  justify-content: center;
+  text-align: center;
+}
+.diccionary-details h2, .diccionary-details p {
+  margin: 0;
+}
+
+.diccionary .diccionary-definition {
+  flex: 2;
+}
+
+
+/* LEFT VAR */
+.sidebar {
+  border: 2px solid #999;
+  flex: 1;
+  margin: 0 0 0px 25px;
+  text-align: center;
+}
+.sidebar p {
+  font-size: 2em;
+  margin: 15px 0 0 15px;
+  text-align: start;
+}
