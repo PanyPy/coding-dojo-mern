@@ -1,0 +1,58 @@
+.app {
+  width: 950px;
+  background-color: #dddddd;
+  margin: 0px auto;
+  overflow: hidden;
+}
+.top-nav {
+  height: 150px;
+  background-color: #6aa84f;
+  margin: 15px;
+}
+
+.side-nav {
+  background-color: #6fa8dc;
+  display: inline-flex;
+  height: 300px;
+  margin: 0px 0px 0px 15px;
+  vertical-align: top;
+  width: 200px;
+}
+
+.main {
+  background-color: #e06666;
+  display: inline-flex;
+  height: 400px;
+  justify-content: center;
+  margin: 0px 0px 15px 15px;
+  padding: 0 2px;
+  vertical-align: top;
+  width: 700px;
+}
+
+.sub-content {
+  height: 230px;
+  background-color: #ffd966;
+  margin: 15px;
+  padding: 0 2px;
+  width: 210px;
+}
+
+#advertisement {
+  height: 120px;
+  width: 660px;
+  background-color: #b4a7d6;
+  margin: 15px;
+  margin-top: 260px;
+  padding: 0 5px;
+  position: absolute;
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+}
+
+.sub-content:nth-child(2){
+  margin: 15px 0px;
+}
