@@ -1,5 +1,5 @@
 # Support it
-Prototype `01 - assigment`
+Prototype `01 - assignment`
 Add +1 when user clicks `bday` button.
 
 # Getting Started with Create React App

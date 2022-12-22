@@ -1,12 +1,10 @@
-# Blocks
+# User Form
 Prototype `01 - assignment` using props.
+See result -> `02 - result`.
 
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Install dependencies
-### `npm install`
 
 ## Available Scripts
 

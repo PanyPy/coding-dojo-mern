@@ -1,5 +1,5 @@
 # Support it
-Prototype `01 - assigment` using props.
+Prototype `01 - assignment` using props.
 
 # Getting Started with Create React App
 

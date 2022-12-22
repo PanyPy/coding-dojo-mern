@@ -1,12 +1,10 @@
-# Blocks
-Prototype `01 - assignment` using props.
+# User Form with Validations
+Prototype `01 - assignment`. Add validations
+See result -> `02 - result`.
 
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Install dependencies
-### `npm install`
 
 ## Available Scripts
 
