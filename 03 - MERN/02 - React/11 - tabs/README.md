@@ -1,6 +1,5 @@
-# User Form with Validations (useReduce)
-Prototype `01 - assignment`. Add validations
-See result -> `02 - result`.
+# Tabs
+Prototype `01 - assignment`.
 
 # Getting Started with Create React App
 

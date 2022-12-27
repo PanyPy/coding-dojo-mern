@@ -1,4 +1,4 @@
-# User Form with Validations (useReduce)
+# Boxes
 Prototype `01 - assignment`. Add validations
 See result -> `02 - result`.
 

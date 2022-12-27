@@ -4,13 +4,7 @@ import UserForm from './components/UserForm';
 import UserView from './components/UserView';
 
 function App() {
-  const [user, setUser] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
-  });
+  const [boxes, setBoxes] = useState([]);
 
   return (
     <div className="App">
