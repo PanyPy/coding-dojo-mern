@@ -13,7 +13,8 @@ const reducer = (state, action) => ({
 
 const UserForm = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  function handleChange(e) {
+
+  const handleChange = e => {
     const { name, value } = e.target;
     let error = value.length < 2 && value !== "" ? "Must be at least 2 characters long." : null;
     // validate email -> credits https://www.w3resource.com/javascript/form/email-validation.php
@@ -22,6 +23,7 @@ const UserForm = () => {
     } else if(!error && name === "email" && !(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value))){
       error = "You have entered an invalid email address!";
     }
+    
     dispatch({
         type: name,
         payload: {value, error: error} 
