@@ -1,12 +1,16 @@
 import React from "react";
+import { buildLink } from "../../helper";
 
 const ShipView = props => {
   const {
-    name, model, cost_in_credits, consumables, cargo_capacity, crew, manufacturer, passengers, starship_class
-    // films, pilots optional
+    name, model, cost_in_credits, consumables, cargo_capacity, crew, 
+    manufacturer, passengers, starship_class,
+    films, pilots
   } = props.result;
 
-  console.log(props.result);
+  const filmLinks = films.length > 0 && <> {films.map(film => (buildLink("films", film, "Film")))}<br></br> </>;
+  const pilotsLinks = pilots.length > 0 && <> {pilots.map(pilot => (buildLink("people", pilot, "Pilot")))}<br></br> </>;
+
   return (
     <div className="card">
       <div className="card-body">
@@ -22,8 +26,9 @@ const ShipView = props => {
         <li className="list-group-item"><i>passengers: </i>{passengers}</li>
       </ul>
       <div className="card-body">
-        <a href="#" className="card-link">Card link</a>
-        <a href="#" className="card-link">Another link</a>
+        <i>click to view in a new tab</i><br></br>
+        {filmLinks}
+        {pilotsLinks}
       </div>
     </div>
 	)

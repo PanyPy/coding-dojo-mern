@@ -9,8 +9,8 @@ const PlanetView = props => {
   } = props.result;
 
   // get links to render
-  const filmLinks = films.length > 0 && <> {films.map((film, index) => buildLink(index, "films", film, "Film"))}<br></br> </>;
-  const residentLinks = residents.length > 0 && <> {residents.map((resident, index) => (buildLink(index, "people", resident, "Resident")))}<br></br> </>;
+  const filmLinks = films.length > 0 && <> {films.map(film => buildLink("films", film, "Film"))}<br></br> </>;
+  const residentLinks = residents.length > 0 && <> {residents.map(resident => (buildLink("people", resident, "Resident")))}<br></br> </>;
   
 
   return (

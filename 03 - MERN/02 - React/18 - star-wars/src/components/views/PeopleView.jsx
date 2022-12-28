@@ -23,10 +23,10 @@ const PeopleView = props => {
   }, [homeworld]);
 
   // get links to render
-  const starshipLinks = starships.length > 0 && <> {starships.map((starship, index) => buildLink(index, "starships", starship, "Starship"))}<br></br> </>;
-  const vehicleLinks = vehicles.length > 0 && <> {vehicles.map((vehicle, index) => (buildLink(index, "vehicles", vehicle, "Vehicle")))}<br></br> </>;
-  const specieLinks = species.length > 0 && <> {species.map((specie, index) => (buildLink(index, "species", specie, "Specie")))}<br></br> </>;
-  const filmLinks = films.length > 0 && <> {films.map((film, index) => (buildLink(index, "films", film, "Film")))}<br></br> </>;
+  const starshipLinks = starships.length > 0 && <> {starships.map(starship => buildLink("starships", starship, "Starship"))}<br></br> </>;
+  const vehicleLinks = vehicles.length > 0 && <> {vehicles.map(vehicle => (buildLink("vehicles", vehicle, "Vehicle")))}<br></br> </>;
+  const specieLinks = species.length > 0 && <> {species.map(specie => (buildLink("species", specie, "Specie")))}<br></br> </>;
+  const filmLinks = films.length > 0 && <> {films.map(film => (buildLink("films", film, "Film")))}<br></br> </>;
 
 	return (
     <div className="row">

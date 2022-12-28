@@ -1,6 +1,28 @@
+# Star Wars
+Prototype `01 - assignment`.
+See result -> `02..10 - result`.
+
+# Getting Started with Create React App
+How to use?
+1. From homepage (localhost:3000) -> Select Option, insert ID and click search. (check `02 - result`),
+2. You can click any link (link ships, `03 - result`),
+3. If you insert an invalid ID, you are going to see the error page (`04 - result`).
+4. There is a loading to prevent user click or change value when the data isLoading (`05 - result`).
+5. We could use URL to navigate between resources (people, planet, specie...). All the components are being reused, so we don't duplicate code/logic.
+
+Test cases:
+1. http://localhost:3000/people/11 (`08 - result`).
+2. Click film 1 => http://localhost:3000/films/1 (`09 - result`).
+3. Click planet 1 => http://localhost:3000/planets/1 (`10 - result`).
+3. Click Specie 1 => http://localhost:3000/species/1 (`10 - result`).
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Install dependencies
+### `npm install`
 
 ## Available Scripts
 
