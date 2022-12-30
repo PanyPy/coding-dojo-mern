@@ -10,12 +10,12 @@ This repository contains the assignments related to `Coding Dojo - MERN Bootcamp
 - [MERN](https://github.com/PanyPy/coding-dojo-mern/tree/main/03%20-%20MERN)
   - [JavaScript](https://github.com/PanyPy/coding-dojo-mern/tree/main/03%20-%20MERN/01%20-%20JavaScript)
   - [React](https://github.com/PanyPy/coding-dojo-mern/tree/main/03%20-%20MERN/02%20-%20React)
-  - Express
-  - MongoDB
-  - Full Stack MERN
-  - MERN Auth
+  - [Express](https://github.com/PanyPy/coding-dojo-mern/tree/main/03%20-%20MERN/03%20-%20express)
+  - [MongoDB](https://github.com/PanyPy/coding-dojo-mern/tree/main/03%20-%20MERN/04%20-%20MongoDB)
+  - [Full Stack MERN](https://github.com/PanyPy/coding-dojo-mern/tree/main/03%20-%20MERN/05%20-%20MERN)
+  - MERN Auth [no code involved]
   - Socket.io
-  - MERN Deployment
+  - MERN Deployment [no code involved]
  
  
 Related links
