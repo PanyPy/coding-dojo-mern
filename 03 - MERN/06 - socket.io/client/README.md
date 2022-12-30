@@ -1,13 +1,6 @@
-# Support it
-Prototype `01 - assignment`
-Add +1 when user clicks `bday` button.
-
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Install dependencies
-### `npm install`
 
 ## Available Scripts
 

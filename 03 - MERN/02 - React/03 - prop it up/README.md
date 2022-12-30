@@ -1,4 +1,4 @@
-# Support it
+# Prop It Up
 Prototype `01 - assignment`
 
 # Getting Started with Create React App
