@@ -1,5 +1,8 @@
+require('./server/config/mongoose.config');
+
 const express = require("express");
-const cors = require('cors')
+const cors = require('cors');
+const Message = require('./server/models/message.model');
 
 const app = express () ;
 app.use(cors());
@@ -10,9 +13,6 @@ const server = app.listen (8000, () =>
   console. log("The server is all fired up on port 8000")
 );
 
-// To initialize the socket, we need to
-// pass invoke a new instance of socket.io
-// and pass it our express server
 const io = require ("socket.io") (server, {
   cors: {
     origin: "*",
@@ -20,21 +20,37 @@ const io = require ("socket.io") (server, {
   }
 });
 
-// const welcome = () => console.log('welcome');
 io.on("connection", socket => {
-  // NOTE: Each client that connects gets their own socket id!
-  console. log(socket.id);
-  console. log("Nice to meet you. (Handshake)");
-  // if this is logged in our node terminal, that means a new client /
-  // has successfully completed the handshake!
+  socket.on("new_message", data => {
+    const {username, room, message} = data;
+    // Notify to other users
+    socket.broadcast.emit("new_message_from_server_"+room, {username, message});
 
-  // We add all of our additional event listeners
-  // right inside this function.
-  // NOTE "connection" is a BUILT IN event listeners.
+    // store message in db, this should go in the controller, you can move if you want :)
+    const newData = {username: username, message: message};
+    Message.findOneAndUpdate({room: room}, {$push: {messages: newData}}, 
+      (error, success) => {
+        if (error) console.error(error);
+        else console.log(success);
+      });
+  })
 
   socket.on("join_chat", data => {
-  // socket. broadcast will emit to all other clients besides the 
-  // client who is actually emitting
-  socket.emit("new_message_from_server", "Welcome to the chat!");
+    const {username, room} = data;
+
+    // load message from db and return;
+    Message.findOne({room: room})
+      .then(roomFromDB => {
+        // create if doesn't exist, , this should go in the controller, you can move if you want :)
+        if(!roomFromDB)Message.create({room, message:[]})
+        const messages = roomFromDB?.messages || [];
+        messages.push({message:"Welcome to the chat!"});
+
+        // send messages to the FE
+        socket.emit("welcome_new_message_from_server_"+room, messages);
+      }).then(() =>{
+        // Notify to other users
+        socket.broadcast.emit("new_message_from_server_"+room, {message: `${username} Joined the chat`});
+      });
   });
 });

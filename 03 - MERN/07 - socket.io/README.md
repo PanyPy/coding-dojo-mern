@@ -1,5 +1,6 @@
 # Socket.io
-See result `01 - result`
+Prototype `01 - assignment`.
+See result `02 - result`
 
 ## Install dependencies for client/server
 ### `npm install` -> in root
