@@ -14,7 +14,7 @@ This repository contains the assignments related to `Coding Dojo - MERN Bootcamp
   - [MongoDB](https://github.com/PanyPy/coding-dojo-mern/tree/main/03%20-%20MERN/04%20-%20MongoDB)
   - [Full Stack MERN](https://github.com/PanyPy/coding-dojo-mern/tree/main/03%20-%20MERN/05%20-%20MERN)
   - MERN Auth [no code involved]
-  - Socket.io
+  - [Socket.io](https://github.com/PanyPy/coding-dojo-mern/tree/main/03%20-%20MERN/06%20-%20socket.io)
   - MERN Deployment [no code involved]
  
  
