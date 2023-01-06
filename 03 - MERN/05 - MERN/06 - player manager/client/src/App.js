@@ -2,8 +2,8 @@ import './App.css';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import PlayerForm from './components/PlayerForm';
 import PlayerList from './components/PlayerList';
-import Layout from './components/Layout';
 import PlayerStatus from './components/PlayerStatus';
+import Layout from './layouts/Layout';
 
 function App() {
 return (
