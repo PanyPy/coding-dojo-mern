@@ -3,10 +3,8 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import DeletePlayerButton from './DeletePlayerButton';
 import ManagePlayersLayout from '../layouts/ManagePlayersLayout';
-import { PromiseProvider } from 'mongoose';
 
-export default props => {
-
+const PlayerList = () => {
   const [ players, setPlayers ] = useState([]);
 
   // skip deleted products
@@ -26,7 +24,7 @@ export default props => {
     loadPlayers();
   },[])
   return (
-    <ManagePlayersLayout location={props.location} >
+    <ManagePlayersLayout >
       <h2>Players</h2>
       <table className="table">
         <thead>
@@ -55,3 +53,4 @@ export default props => {
   )
 }
 
+export default PlayerList;

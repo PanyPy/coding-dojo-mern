@@ -13,7 +13,7 @@ const customStyles = {
   },
 };
 
-export default props => {
+const DeletePlayerButton = props => {
   const { playerId, playerName, successCallback } = props;
   const [modalIsOpen, setIsOpen] = React.useState(false);
 
@@ -44,3 +44,4 @@ export default props => {
   )
 }
 
+export default DeletePlayerButton;

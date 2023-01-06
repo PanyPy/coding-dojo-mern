@@ -1,9 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const Layout =(props) =>{
-  const activePlayers = props.location.pathname.includes("/players/");
-  const activeStatus = props.location.pathname.includes("/status/");
+  const location = useLocation();
+  const activePlayers = location.pathname.includes("/players/");
+  const activeStatus = location.pathname.includes("/status/");
 
   return(
     <>

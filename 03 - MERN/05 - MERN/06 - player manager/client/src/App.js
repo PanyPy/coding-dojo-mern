@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import PlayerForm from './components/PlayerForm';
 import PlayerList from './components/PlayerList';
 import Layout from './components/Layout';
@@ -9,12 +9,13 @@ function App() {
 return (
     <div className="App">
       <BrowserRouter>
-        <Route exact path="/players/list" render={ (routeProps) => <Layout {...routeProps}><PlayerList {...routeProps} /></Layout>}/>
-        <Route exact path="/players/addplayer" render={ routeProps => <Layout {...routeProps}><PlayerForm id = {routeProps.match.params.id} {...routeProps}/></Layout>} />
-        <Route path="/players/:id/edit" render={ (routeProps) => <Layout {...routeProps}><PlayerForm id = {routeProps.match.params.id} {...routeProps} isEdit /></Layout>}/>
-        <Route path="/status/game/:id" render={ (routeProps) => <Layout {...routeProps}><PlayerStatus id = {routeProps.match.params.id} {...routeProps} isEdit /></Layout>}/>
-        <Route exact path="/" render={ (routeProps) =>  routeProps.history.push('/players/list')} />
-
+        <Routes>
+          <Route exact path="/players/list" element={ <Layout><PlayerList /></Layout>}/>
+          <Route exact path="/players/addplayer" element={ <Layout><PlayerForm/></Layout>} />
+          <Route path="/players/:id/edit" element={ <Layout><PlayerForm isEdit /></Layout>}/>
+          <Route path="/status/game/:id" element={ <Layout><PlayerStatus isEdit /></Layout>}/>
+          <Route exact path="*" element={ <Navigate to='/players/list' />} />
+        </Routes>
       </BrowserRouter>
     </div>
   );
