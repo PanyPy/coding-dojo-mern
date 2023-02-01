@@ -7,7 +7,7 @@ import ShipView from "../views/ShipView";
 import SpecieView from "../views/SpecieView";
 
 const SearchResult = props => {
-  // if there is a ERROR, show Obi Wan Kenobi
+  // if there is an ERROR, show Obi Wan Kenobi
   if(props.result === "ERROR") {
     return (
       <div className="d-flex align-items-center flex-column bd-highlight mb-3">
