@@ -30,15 +30,6 @@ module.exports.getIdea = (request, response) => {
     .catch(error => catchError(error, response));
 }
 
-// module.exports.likeIdea = (request, response) => {
-//   console.log(request.params.id)
-//   console.log(request.params.user_id)
-//   console.log(request.params)
-//   // Idea.findOne({_id: request.params.id}).populate('postedBy').populate("likes")
-  //   .then(idea => response.json(idea))
-  //   .catch(error => catchError(error, response));
-// }/
-
 module.exports.updateIdea = (request, response) => {
   Idea.findOneAndUpdate({_id: request.params.id}, request.body, {new:true})
     .then(updatedAuthor => response.json(updatedAuthor))
