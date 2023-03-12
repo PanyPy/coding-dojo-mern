@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 const IdeaCard = props => {
-  const {_id, note, postedBy} = props.idea;
+  const {_id, approvedAt, note, postedBy} = props.idea;
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
   const likes = [];
@@ -28,6 +28,16 @@ const IdeaCard = props => {
       newIdea.likes = newIdea.likes.filter(user => user !== currentUser._id);
     }
 
+    const { approvedAt, ...ideaAttr } = newIdea;
+    axios.put('http://localhost:8000/api/ideas/' + _id, 
+      {...ideaAttr})
+    .then(() => props.reloadIdeas());
+  }
+
+  const approveIdea = () =>{
+    const newIdea = props.idea;
+    newIdea.approvedAt = Date.now();
+
     axios.put('http://localhost:8000/api/ideas/' + _id, 
       {...newIdea})
     .then(() => props.reloadIdeas());
@@ -47,14 +57,16 @@ const IdeaCard = props => {
         </div>
       </div>
       {props.showLikes &&
-        <div className='d-flex justify-content-between col-md-3'>
-          {currentUser._id !== postedBy._id && 
+        <div className='d-flex justify-content-between col-md-5'>
+          {currentUser.role !== 'Admin' ?
+           (currentUser._id !== postedBy._id && 
             props.idea.likes.includes(currentUser._id) ? 
               <button onClick={() => likeIdea(false)} className="btn btn-sm btn-outline-danger">- like</button> :
-              currentUser._id !== postedBy._id && <button onClick={() => likeIdea(true)} className="btn btn-sm btn-success">+ like</button>}
+              currentUser._id !== postedBy._id && <button onClick={() => likeIdea(true)} className="btn btn-sm btn-success">+ like</button>)
+            :  !approvedAt && <button onClick={approveIdea} className="btn btn-sm btn-outline-success">Aprobar idea</button>}
 
-          <h5>{likes.length > 0 ? <Link to={`/bright_ideas/${_id}`}> {`${likes.length === 1 ? '1 person' : likes.length +' people'} like this`} </Link> : 'No likes, yet'} </h5>
-          {currentUser._id === postedBy._id && <button onClick={deleteIdea}  className="btn btn-sm btn-danger">Delete</button>}
+          <h5>{likes.length > 0 ? <Link to={`/bright_ideas/${_id}`}> {`${likes.length === 1 ? '1 person' : likes.length +' people'} like this`} </Link> : approvedAt ? 'No likes, yet' : 'Not Approved, yet'} </h5>
+          {(currentUser._id === postedBy._id || currentUser.role === 'Admin') && <button onClick={deleteIdea}  className="btn btn-sm btn-danger">Delete</button>}
         </div>
         }
     </div>

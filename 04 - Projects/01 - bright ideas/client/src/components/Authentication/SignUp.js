@@ -27,7 +27,6 @@ const SignUp = () => {
 
     // prevent to register if there are validation errors
     if(!hasError) {
-      console.log('should')
       axios.post('http://localhost:8000/api/register', {...user})
       .then(response => {
         setUserErrors({});

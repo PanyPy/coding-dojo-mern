@@ -5,6 +5,7 @@ import IdeaCard from './IdeaCard';
 
 const IdeaList = () => {
   const [ideas, setIdeas] = useState([]);
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
   const loadIdeas = () => {
     axios.get('http://localhost:8000/api/ideas', {
@@ -20,9 +21,16 @@ const IdeaList = () => {
     loadIdeas();
   },[])
 
-  console.log(ideas)
-  const sortedIdeas = ideas.sort((a, b) => a.likes.length < b.likes.length ? 1 : -1);
-  console.log(sortedIdeas)
+  let sortedIdeas;
+  if (currentUser?.role !== 'Admin') {
+    sortedIdeas = ideas.sort((a, b) => {
+      if (a.postedBy === currentUser._id) return -1;
+      return (a.likes.length < b.likes.length) ? 1 : -1;
+    });
+  } else {
+    sortedIdeas = ideas.sort((a, b) => (a.likes.length < b.likes.length) ? 1 : -1).sort((a, b) => a.approvedAt ? 1 : -1);
+  }
+
   return (
     <>
       <InputForm loadIdeas={loadIdeas} />

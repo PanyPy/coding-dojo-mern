@@ -1,6 +1,11 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
+const ROLES = {
+  Admin: 'Admin',
+  User: 'User'
+}
+
 const UserSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -19,6 +24,11 @@ const UserSchema = new mongoose.Schema({
       validator: val => /^([\w-\.]+@([\w-]+\.)+[\w-]+)?$/.test(val),
       message: "Please enter a valid email"
     }
+  },
+  role: {
+    type: String,
+    enum: Object.values(ROLES),
+    default: 'User'
   },
   password: {
     type: String,
@@ -47,3 +57,4 @@ UserSchema.pre('save', function(next) {
 });
 
 module.exports.User = mongoose.model('User', UserSchema);
+module.exports.ROLES = ROLES;

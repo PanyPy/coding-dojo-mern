@@ -46,7 +46,7 @@ module.exports = {
           .compare(request.body.password, user.password,
             (err, data)  => {
               if (data) {
-                const newJWT = jwt.sign({_id: user._id}, process.env.SECRET_KEY, {expiresIn: "365d"});
+                const newJWT = jwt.sign({_id: user._id, role: user.role}, process.env.SECRET_KEY, {expiresIn: "365d"});
                 response
                   .cookie("userToken", newJWT, {httpOnly: true})
                   .json({ message: "success!", userToken: newJWT, user });

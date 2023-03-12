@@ -12,7 +12,7 @@ const PlayerSchema = new mongoose.Schema({
       values: ['', 'Forward', 'Goalkeeper', 'Midfielder'],
       message: 'Invalid value for preferred position'
     }
-  }  ,
+  },
   gameStatus: {
     type:[{status: String}],
     default: [{status: "Undecided"}, {status: "Undecided"}, {status: "Undecided"}]

@@ -1,0 +1,5 @@
+# env example
+HOST='http://localhost:'
+PORT='8000'
+SECRET_KEY='mysecret'
+DB='mongodb://localhost/ideas'
