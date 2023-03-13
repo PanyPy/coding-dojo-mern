@@ -1,15 +1,16 @@
 import React from 'react'
 import Login from './Authentication/Login';
 import SignUp from './Authentication/SignUp';
+import { navBgColor, mainBgColor } from './Style';
 
 const Layout =(props) =>{
 
   return(
     <>
-      <div style={{backgroundColor:"#0d6efd", color:"white", height: "50px", margin: "0px  5rem"}}>
-        <h2>Welcome to Bright Ideas</h2>
+      <div className="flex m-3 p-1 rounded" style={{backgroundColor:mainBgColor, color:"white"}}>
+        <h2 className="my-3">Welcome to Bright Ideas</h2>
       </div>
-      <div className='d-flex' style={{backgroundColor:"#087990", border:"1px solid black", margin: "0px 5rem"}}>
+      <div className='d-flex rounded m-3' style={{backgroundColor:navBgColor, border:"1px solid black", margin: "0px 5rem"}}>
         <SignUp />
         <Login />
       </div>
