@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 const IdeaCard = props => {
   const {_id, note, postedBy} = props.idea;
@@ -14,8 +15,21 @@ const IdeaCard = props => {
   });
 
   const deleteIdea = () =>{
-    axios.delete('http://localhost:8000/api/ideas/' + _id)
-    .then(() => props.reloadIdeas());
+    Swal.fire({
+      title: 'Are you sure you want to delete?',
+      text: "If you accept you will not be able to get it back!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios.delete('http://localhost:8000/api/ideas/' + _id)
+        .then(() => props.reloadIdeas());
+      }
+    })
+
   }
 
   const likeIdea = likeValue =>{
@@ -35,9 +49,9 @@ const IdeaCard = props => {
 
   return (
     <div className="row d-flex justify-content-center mt-3 mb-3" align="center">
-      <div className="d-flex col-md-3 flex-column">
+      <div className="d-flex col-md-3">
+        <img src={currentUser.photo} style={{width: 50+"px", height:50+"px"}} className="img-fluid img-thumbnail" alt="photo-perfil"/>
         <h4><Link to={`/users/${postedBy?._id}`}>{`${postedBy?.name.charAt(0).toUpperCase()+postedBy?.name.slice(1)}`}</Link> says:</h4>
-        
       </div>
       <div key={props.idea._id} className="card mb-1" style={{maxWidth: "540px"}}>
         <div className="row g-0">

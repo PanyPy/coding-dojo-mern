@@ -7,6 +7,7 @@ import UserDetails from './components/Users/UserDetails';
 import Layout from './components/Layout';
 import IdeaList from './components/Ideas/IdeaList';
 import IdeaDetails from './components/Ideas/IdeaDetails';
+import UserEdit from './components/Users/UserEdit';
 
 // axios default config
 axios.defaults.withCredentials = true;
@@ -31,6 +32,7 @@ function App() {
 
           {/* User  */}
           <Route exact path="/users/:id" element={ <Layout title="Hi" showLogout><UserDetails/></Layout>} />
+          <Route exact path="/usersedit" element={ <Layout title="Hi" showLogout><UserEdit/></Layout>} />
 
           {/* Ideas  */}
           <Route exact path="/bright_ideas" element={ <Layout title="Ideas" showLogout><IdeaList /></Layout>}/>

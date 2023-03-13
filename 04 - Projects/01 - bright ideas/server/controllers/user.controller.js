@@ -60,5 +60,19 @@ module.exports = {
   logout: (request, response) => {
     response.clearCookie('userToken')
     response.json({success:'success!'})
+  },
+
+  editUser:(request, response) => {
+    User.updateOne({_id:request.body.id}, request.body)
+    .then((resultado)=> {
+      //Buscar datos actualizados para enviar y guardar en localstorage
+      User.findOne({_id:request.body.id})
+      .then((user)=>{
+        response.json(user);
+      })
+      //response.json(resultado);
+    }).catch((error)=>{
+      response.status(400).json(error)
+    })
   }
 }
