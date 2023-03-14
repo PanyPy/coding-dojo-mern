@@ -31,7 +31,7 @@ function App() {
           <Route exact path="/" element={  <WelcomeLayout/> }/>
 
           {/* User  */}
-          <Route exact path="/users/:id" element={ <Layout title="Hi" showLogout><UserDetails/></Layout>} />
+          <Route exact path="/users/:id" element={ <Layout showLogout><UserDetails/></Layout>} />
           <Route exact path="/usersedit" element={ <Layout title="Hi" showLogout><UserEdit/></Layout>} />
 
           {/* Ideas  */}

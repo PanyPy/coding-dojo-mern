@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios';
+import Toast from '../../assets/toast';
 
 const SignUp = () => {
   const [user, setUser] = useState({name: "", alias: "", email: "", password: "", confirmPassword: ""});
@@ -30,7 +31,10 @@ const SignUp = () => {
       axios.post('http://localhost:8000/api/register', {...user})
       .then(response => {
         setUserErrors({});
-        alert('Success, Please Login');
+        Toast.fire({
+          icon: 'success',
+          title: 'Success, Please Login'
+        })
       }).catch(error => {
         console.log(error)
         setUserErrors(error.response.data.errors)
@@ -42,7 +46,7 @@ const SignUp = () => {
       <form onSubmit={ signUp } className="mt-5 mb-5 authentication-form">
         <div className="row flex-column align-items-center mt-3 mb-3">
           <h2>Register</h2>
-            <div className="col-md-9 mb-3 ">
+            <div className="col-md-9 mb-3">
               <span className="form-label left-label">Name</span>
               <input type="text" autoFocus name="name"  className="form-control" value={user.name} onChange = { onChange }/> 
               {userErrors.name && 
@@ -52,7 +56,7 @@ const SignUp = () => {
               }
             </div>
 
-            <div className="col-md-9 mb-3 ">
+            <div className="col-md-9 mb-3">
               <span className="form-label left-label">Alias</span>
               <input type="text" autoFocus name="alias"  className="form-control" value={user.alias} onChange = { onChange }/> 
               {userErrors.alias && 
@@ -62,7 +66,7 @@ const SignUp = () => {
               }
             </div>
 
-            <div className="col-md-9 mb-3 ">
+            <div className="col-md-9 mb-3">
               <span className="form-label left-label">Email</span>
               <input type="text" autoFocus name="email"  className="form-control" value={user.email} onChange = { onChange}/> 
               {userErrors.email && 
@@ -72,7 +76,7 @@ const SignUp = () => {
               }
             </div>
 
-            <div className="col-md-9 mb-3 ">
+            <div className="col-md-9 mb-3">
               <span className="form-label left-label">Password</span>
               <input type="password" autoFocus name="password"  className="form-control" value={user.password} onChange = { onChange}/> 
               {userErrors.password && 

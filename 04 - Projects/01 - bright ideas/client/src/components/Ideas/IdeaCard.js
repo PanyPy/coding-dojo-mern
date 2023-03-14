@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import defaultAvatar from'../../assets/avatar.png';
 
 const IdeaCard = props => {
   const {_id, approvedAt, note, postedBy} = props.idea;
@@ -59,9 +60,9 @@ const IdeaCard = props => {
 
   return (
     <div className="row d-flex justify-content-center mt-3 mb-3" align="center">
-      <div className="d-flex col-md-3">
-        <img src={currentUser.photo} style={{width: 50+"px", height:50+"px"}} className="img-fluid img-thumbnail" alt="photo-perfil"/>
-        <h4><Link to={`/users/${postedBy?._id}`}>{`${postedBy?.name.charAt(0).toUpperCase()+postedBy?.name.slice(1)}`}</Link> says:</h4>
+      <div className="d-flex col-md-3 align-items-center">
+        <img src={postedBy.photo || defaultAvatar} style={{height:"50px", marginRight:"10px", width: "50px"}} className="img-fluid img-thumbnail" alt="perfil"/>
+        <h4><Link to={`/users/${postedBy?._id}`}>{`${postedBy?.alias.charAt(0).toUpperCase()+postedBy?.alias.slice(1)}`}</Link> says:</h4>
       </div>
       <div key={props.idea._id} className="card mb-1" style={{maxWidth: "540px"}}>
         <div className="row g-0">
@@ -73,11 +74,11 @@ const IdeaCard = props => {
       {props.showLikes &&
         <div className='d-flex justify-content-between col-md-5'>
           {currentUser.role !== 'Admin' ?
-           (currentUser._id !== postedBy._id && 
-            props.idea.likes.includes(currentUser._id) ? 
-              <button onClick={() => likeIdea(false)} className="btn btn-sm btn-outline-danger">- like</button> :
-              currentUser._id !== postedBy._id && <button onClick={() => likeIdea(true)} className="btn btn-sm btn-success">+ like</button>)
-            :  !approvedAt && <button onClick={approveIdea} className="btn btn-sm btn-outline-success">Aprobar idea</button>}
+            (currentUser._id !== postedBy._id && 
+              props.idea.likes.includes(currentUser._id) ? 
+                <button onClick={() => likeIdea(false)} className="btn btn-sm btn-outline-danger">- like</button> :
+                currentUser._id !== postedBy._id && <button onClick={() => likeIdea(true)} className="btn btn-sm btn-success">+ like</button>)
+            : !approvedAt && <button onClick={approveIdea} className="btn btn-sm btn-outline-success">Aprobar idea</button>}
 
           <h5>{likes.length > 0 ? <Link to={`/bright_ideas/${_id}`}> {`${likes.length === 1 ? '1 person' : likes.length +' people'} like this`} </Link> : approvedAt ? 'No likes, yet' : 'Not Approved, yet'} </h5>
           {(currentUser._id === postedBy._id || currentUser.role === 'Admin') && <button onClick={deleteIdea}  className="btn btn-sm btn-danger">Delete</button>}

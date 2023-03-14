@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import axios from 'axios';
+import Toast from '../../assets/toast';
 
  const InputForm = (props) => {
   const ideaRef = useRef();
@@ -10,6 +11,10 @@ import axios from 'axios';
       .then(response => {
         ideaRef.current.value = "";
         props.loadIdeas();
+        Toast.fire({
+          icon: 'success',
+          title: 'Idea posted!'
+        })
       }).catch(error => {
         console.log(error)
       })

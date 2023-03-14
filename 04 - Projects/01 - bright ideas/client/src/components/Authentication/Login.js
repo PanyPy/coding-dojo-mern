@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import axios from 'axios';
 import { useNavigate} from 'react-router-dom';
+import Toast from '../../assets/toast';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -26,7 +27,10 @@ const Login = () => {
         setEmailError(err.response.data.user);
       } else {
         setEmailError(undefined);
-        alert(err.response?.data?.error);
+        Toast.fire({
+          icon: 'error',
+          title: err.response?.data?.error
+        })
       }
     })
   }
