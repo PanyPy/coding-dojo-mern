@@ -54,9 +54,8 @@
 }
 
 .btn-helper {
-  float: right;
-  margin-top: -40px;
-  margin-right: 100px;
+    font-size: 20px;
+    font-weight: 700;
 }
 
 .helper-left {
