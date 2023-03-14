@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-mongoose.connect("mongodb+srv://jncvbpms:jncvbpms@jncvbpms.6c49x.mongodb.net/players?retryWrites=true&w=majority", {
+mongoose.connect("mongodb://localhost/player_manager", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 })

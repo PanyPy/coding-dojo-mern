@@ -30,9 +30,7 @@ console.log(insertAt([1,2,3,4], 1, 100));
 // 03 - insertAt
 const removeAt = (array, position) => {
   for(let i=0; i<array.length-1; i++) {
-    // if(i<position) array[i] = array[i-1];
     if(i>=position) array[i] = array[i+1];
-    // else array[i] = array[i];
   }
   array.pop();
   return array;

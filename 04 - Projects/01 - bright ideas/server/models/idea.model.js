@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const UserSchema = require('./user.model');
 
 const IdeaSchema = new mongoose.Schema({
+  approvedAt: {type: Date, default: null},
   likes: [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
   note: {
     type: String,

@@ -1,6 +1,5 @@
 # Player Manager
 Prototype `01 - assignment`.
-See result -> `02..05 - result`. list players/confirm modal/create player/manage status
 
 ## Install dependencies for client/server
 ### `npm install` -> in root
