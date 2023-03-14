@@ -27,7 +27,7 @@ const UserEdit = () => {
       })
       return;
     }
-    axios.put("http://localhost:8000/api/edituser", user)
+    axios.put("http://localhost:8000/api/users/"+user.id, {...user})
           .then((response) => {
             localStorage.setItem('currentUser', JSON.stringify(response.data));
             Toast.fire({
@@ -36,6 +36,10 @@ const UserEdit = () => {
             })
             setTimeout(function(){navigate("/bright_ideas")},1500);
           }).catch((error) => {
+            Toast.fire({
+              icon: 'error',
+              title: error
+            })
             console.log(error)
           })
   }

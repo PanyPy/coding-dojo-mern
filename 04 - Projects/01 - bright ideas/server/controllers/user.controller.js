@@ -62,17 +62,11 @@ module.exports = {
     response.json({success:'success!'})
   },
 
-  editUser:(request, response) => {
-    User.updateOne({_id:request.body.id}, request.body)
-    .then((resultado)=> {
-      //Buscar datos actualizados para enviar y guardar en localstorage
-      User.findOne({_id:request.body.id})
-      .then((user)=>{
-        response.json(user);
-      })
-      //response.json(resultado);
-    }).catch((error)=>{
-      response.status(400).json(error)
+  updateUser:(request, response) => {
+    User.findOneAndUpdate({_id: request.params.id}, request.body, {new:true})
+    .then(updatedAuthor => {
+      return response.json(updatedAuthor)
     })
+    .catch(error => catchError(error, response));
   }
 }

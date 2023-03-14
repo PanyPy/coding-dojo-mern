@@ -26,7 +26,7 @@ const Layout = (props) => {
             </button>
           
             <ul className="dropdown-menu" aria-labelledby="dropdownMenuLink">
-              <Link to="/usersedit" className="dropdown-item">Edit Profile</Link>
+              <Link to="/edit_profile" className="dropdown-item">Edit Profile</Link>
               <li><button className="dropdown-item" onClick={ logout }>Logout</button></li>
             </ul>
         </div>

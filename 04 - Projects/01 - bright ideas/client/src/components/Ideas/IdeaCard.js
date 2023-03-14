@@ -61,7 +61,7 @@ const IdeaCard = props => {
   return (
     <div className="row d-flex justify-content-center mt-3 mb-3" align="center">
       <div className="d-flex col-md-3 align-items-center">
-        <img src={postedBy.photo || defaultAvatar} style={{height:"50px", marginRight:"10px", width: "50px"}} className="img-fluid img-thumbnail" alt="perfil"/>
+        <img src={postedBy?.photo || defaultAvatar} style={{height:"50px", marginRight:"10px", width: "50px"}} className="img-fluid img-thumbnail" alt="perfil"/>
         <h4><Link to={`/users/${postedBy?._id}`}>{`${postedBy?.alias.charAt(0).toUpperCase()+postedBy?.alias.slice(1)}`}</Link> says:</h4>
       </div>
       <div key={props.idea._id} className="card mb-1" style={{maxWidth: "540px"}}>
