@@ -24,7 +24,8 @@ const IdeaList = () => {
   let sortedIdeas;
   if (currentUser?.role !== 'Admin') {
     sortedIdeas = ideas.sort((a, b) => {
-      if (a.postedBy === currentUser._id) return -1;
+      if (a.postedBy === currentUser._id) return 1;
+      if (a.likes.length === b.likes.length) return (a.postedBy.alias < b.postedBy.alias) ? -1 : 1;
       return (a.likes.length < b.likes.length) ? 1 : -1;
     });
   } else {

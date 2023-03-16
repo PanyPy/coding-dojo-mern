@@ -47,7 +47,7 @@ const UserEdit = () => {
     <div style={{backgroundColor:"#087990", border:"1px solid black", margin: "2.5rem 5rem"}}>
       <div className='card' style={{borderRadius: 0}}>
         <div className='card-header'>
-          <h2>Edit User</h2>
+          <h2>Edit Profile</h2>
         </div>
         <div className='card-body'>
           <form onSubmit={handlerSubmit}>
