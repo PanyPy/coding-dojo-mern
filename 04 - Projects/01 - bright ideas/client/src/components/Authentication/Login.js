@@ -36,7 +36,7 @@ const Login = () => {
   }
 
   return (
-      <form onSubmit={ login } className="mt-5 mb-5 authentication-form">
+      <form onSubmit={ login } className="mt-5 mb-5 authentication-form rounded">
         <div className="row flex-column align-items-center mt-3 mb-3">
           <h2>Login</h2>
           <div className="col-md-9 mb-3 ">

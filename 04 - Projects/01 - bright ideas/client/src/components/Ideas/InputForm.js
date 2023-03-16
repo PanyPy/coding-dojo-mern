@@ -21,10 +21,10 @@ import Toast from '../../assets/toast';
   }
 
   return (
-    <div className="container align-items-center justify-content-center col-6 mt-3 mb-3">
+    <div className="container align-items-center justify-content-center col-7 mt-2 mb-4">
       <div className="input-group mb-3">
-        <input type="text" className="form-control" minLength="8" placeholder="Post something witty here.." ref={ ideaRef } />
-        <button type="button" className="btn btn-primary" onClick={ createIdea }>Idea!</button>
+        <input type="text" className="form-control fs-8" minLength="8" placeholder="Any ideas...?" ref={ ideaRef } />
+        <button type="button" className="btn btn-primary" onClick={ createIdea }>Post Idea!</button>
       </div>
     </div>
   );

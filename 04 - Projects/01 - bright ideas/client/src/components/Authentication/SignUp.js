@@ -43,7 +43,7 @@ const SignUp = () => {
   }
 
   return (
-      <form onSubmit={ signUp } className="mt-5 mb-5 authentication-form">
+      <form onSubmit={ signUp } className="mt-5 mb-5 authentication-form rounded">
         <div className="row flex-column align-items-center mt-3 mb-3">
           <h2>Register</h2>
             <div className="col-md-9 mb-3">

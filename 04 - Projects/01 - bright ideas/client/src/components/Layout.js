@@ -1,9 +1,12 @@
 import React from 'react'
-import {  useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
-const Layout = (props) => {
+import { navBgColor, mainBgColor } from './Style';
+import Button from 'react-bootstrap/Button';
+
+const Layout =(props) =>{
   const navigate = useNavigate();
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
