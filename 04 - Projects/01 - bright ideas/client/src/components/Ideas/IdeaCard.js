@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import defaultAvatar from'../../assets/avatar.png';
-import { navBgColor, mainBgColor } from '../Style';
+import { navBgColor } from '../Style';
 
 const IdeaCard = props => {
   const {_id, approvedAt, note, postedBy} = props.idea;

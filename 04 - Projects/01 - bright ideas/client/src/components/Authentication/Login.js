@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import axios from 'axios';
 import { useNavigate} from 'react-router-dom';
 import Toast from '../../assets/toast';
-
+import einsteinquote from "../../einsteinquote.png";
 const Login = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState({email: "", password: ""});
@@ -55,7 +55,10 @@ const Login = () => {
           </div>
         </div>
 
-        <button disabled={user.email === "" || user.password === ""} className="btn btn-primary btn-submit" type="submit">Login</button>
+        <div className='d-flex flex-row-reverse justify-content-evenly'>
+          <button style={{height: 40}} disabled={user.email === "" || user.password === ""} className="btn btn-primary btn-submit" type="submit">Login</button>
+          <img className="rounded img-fluid" alt="einsteinquote" style={{width: "350px", height: "auto"}} src={einsteinquote}/>
+        </div>
       </form>
   )
 }

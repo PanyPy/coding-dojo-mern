@@ -4,7 +4,6 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 import { navBgColor, mainBgColor } from './Style';
-import Button from 'react-bootstrap/Button';
 
 const Layout =(props) =>{
   const navigate = useNavigate();
@@ -12,7 +11,7 @@ const Layout =(props) =>{
 
   const logout = () => {
     axios.post('http://localhost:8000/api/logout')
-    .then(response=>{
+    .then(response => {
       navigate('/');
     })
   }
