@@ -1,6 +1,5 @@
 # Bright Ideoas
 Prototype `01 - wireframe`.
-See result -> `02..05 - result`. list/create/create-validate/edit
 
 ## Install dependencies for client/server
 ### `npm install` -> in root
