@@ -1,2 +1,2 @@
 - # Connections
-Fix indetantion, check `01 - assignment`. Open index.html
+Fix indetantion, prototype `01 - assignment`. Open index.html

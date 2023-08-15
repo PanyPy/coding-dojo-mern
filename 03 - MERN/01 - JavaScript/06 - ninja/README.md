@@ -1,2 +1,2 @@
 - # Ninja Class
-check the expected output `01 - assignment`
+Check the expected output `01 - assignment`. Run `node main.js`.

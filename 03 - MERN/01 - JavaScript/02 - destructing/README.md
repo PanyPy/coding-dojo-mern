@@ -1,2 +1,2 @@
 - # Predict Destruct
-run `node main.js`
+Run `node main.js`

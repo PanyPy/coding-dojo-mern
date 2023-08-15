@@ -16,12 +16,21 @@ button.like {
   margin: 20px 5px;
 }
 
+button.like:hover {
+  cursor: pointer;
+}
+
 button.green {
   background-color: green;
   color: black;
   margin: 20px 5px;
   width: 70%;
 }
+
+button.green:hover {
+  cursor: pointer;
+}
+
 /* Nav */
 .nav-container {
   display: flex;

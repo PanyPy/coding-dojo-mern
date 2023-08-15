@@ -50,7 +50,6 @@ const Login = props => {
           </div>
         </div>
         <Link className="btn btn-default" to={"/register"}>Register</Link>
-        <button className="btn btn-primary" type="submit">Submit</button>
         <button disabled={user.email === "" || user.password === ""} className="btn btn-primary" type="submit">Submit</button>
       </form>
   )

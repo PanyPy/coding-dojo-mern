@@ -15,6 +15,9 @@ button.like {
   color: black;
   margin: 20px 5px;
 }
+button.like:hover{
+  cursor: pointer;
+}
 
 .container {
   /* background-color: #f2f2fa; */

@@ -1,2 +1,2 @@
 - # Quicksort
-run `node main.js`
+Implement QuickSort. Run `node main.js`.

@@ -27,7 +27,7 @@ function App() {
         })
       });
     }
-  }, [room]);
+  }, [room, socket]);
 
   const onLogin = (username, room) => {
     setIsLoading(true);

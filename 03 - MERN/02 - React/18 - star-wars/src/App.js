@@ -7,7 +7,7 @@ function App() {
     <BrowserRouter>
       <Switch>
         <Route exact path="/"><SearchList /></Route>
-        <Route  path="/:route/:id" render={(routeProps) => <SearchList {...routeProps} />} />
+        <Route path="/:route/:id" render={(routeProps) => <SearchList {...routeProps} />} />
       </Switch>
     </BrowserRouter>
   );

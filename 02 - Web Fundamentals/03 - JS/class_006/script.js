@@ -22,7 +22,7 @@ const changeCurrentConnections = (count, userID) => {
   currentConnections += count;
   connectionRequest--;
   
-  if(connectionRequest == 0) alert("changin profile will reset count");
+  if(connectionRequest == 0) alert("changing profile will reset count");
 
   document.getElementById(userID).classList.add("hide");
   document.getElementById('connection_request').innerHTML = connectionRequest;

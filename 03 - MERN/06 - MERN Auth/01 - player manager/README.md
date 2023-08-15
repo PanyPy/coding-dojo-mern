@@ -8,5 +8,5 @@ Prototype `01 - assignment`.
 ## Available Scripts
 In  order to use the app, you should start both servers (back-end and front-end)
 to start the servers you should run:
-### `nodemon server` or `npm run dev` -> in root
+### `npm start` -> in root
 ### `npm start` -> in client/

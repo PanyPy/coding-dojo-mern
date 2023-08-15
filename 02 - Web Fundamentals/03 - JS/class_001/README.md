@@ -17,3 +17,5 @@ Print:
 14
 "FizzBuzz"
 ```
+
+Run `node fizzbuzz.js`

@@ -1,2 +1,2 @@
 - # I like it!
-Fix indetantion, check `01 - assignment`
+Fix indetantion, prototype `01 - assignment`.

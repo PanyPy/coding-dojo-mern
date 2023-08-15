@@ -1,2 +1,2 @@
 - # How long will it take?
-run `node main.js`
+Improve performance. Run `node main.js`

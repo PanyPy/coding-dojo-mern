@@ -1,6 +1,5 @@
 # Bright Ideoas
-Prototype `01 - wireframe`.
-See result -> `02..05 - result`. list/create/create-validate/edit
+Prototype `BrightIdeas`.
 
 ## Install dependencies for client/server
 ### `npm install` -> in root
@@ -9,5 +8,5 @@ See result -> `02..05 - result`. list/create/create-validate/edit
 ## Available Scripts
 In  order to use the app, you should start both servers (back-end and front-end)
 to start the servers you should run:
-### `nodemon server` or `npm run dev` -> in root
+### `npm start` -> in root
 ### `npm start` -> in client/

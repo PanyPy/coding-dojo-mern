@@ -1,13 +1,14 @@
 Using MongoDB.
 Please connect to `mongo` console and use these commands:
+# create a db called my_first_db
 1.> use my_first_db
    switched to db my_first_db
 
-
+// create a collection called students
 2.> db.createCollection('students')
    { "ok" : 1 }
 
-
+// insert 5 students
 3. > db.students.insertMany([
     {name: "Student 1", home_state: "Washington", lucky_number: 1, birthday: {month: 1, day: 1, year: 2001}},
     {name: "Student 2", home_state: "California", lucky_number: 2, birthday: {month: 2, day: 2, year: 2002}},
@@ -23,7 +24,7 @@ Please connect to `mongo` console and use these commands:
       '3': ObjectId("63ac2abf4776694620256b11"),
       '4': ObjectId("63ac2abf4776694620256b12") 
     }}
-
+// get all the students
 4.> db.students.find()
   { _id: ObjectId("63ac2abf4776694620256b0e"),
   name: 'Student 1',
@@ -51,6 +52,7 @@ Please connect to `mongo` console and use these commands:
   lucky_number: 10,
   birthday: { month: 5, day: 5, year: 2005 } }
 
+// find students from `California` and `Washington`
 5.> db.students.find({home_state: {$in: ["California", "Washington"]}})
   { _id: ObjectId("63ac2abf4776694620256b0e"),
     name: 'Student 1',
@@ -78,6 +80,7 @@ Please connect to `mongo` console and use these commands:
     lucky_number: 10,
     birthday: { month: 5, day: 5, year: 2005 } }
 
+// Get all the students with lucky_number greater than 3
 6.> db.students.find({lucky_number: {$gt: 3}})
   { _id: ObjectId("63ac2abf4776694620256b10"),
     name: 'Student 3',
@@ -95,6 +98,7 @@ Please connect to `mongo` console and use these commands:
     lucky_number: 10,
     birthday: { month: 5, day: 5, year: 2005 } }
 
+// Get all the students with lucky_number less than 10
 7.> db.students.find({lucky_number: {$lte: 10}})
   { _id: ObjectId("63ac2abf4776694620256b0e"),
     name: 'Student 1',
@@ -122,6 +126,7 @@ Please connect to `mongo` console and use these commands:
     lucky_number: 10,
     birthday: { month: 5, day: 5, year: 2005 } }
 
+// Get all the students with lucky_number between 1-9 (inclusive, also 1 and 9)
 8.> db.students.find({ $and: [{lucky_number: {$gte: 1}}, {lucky_number: {$lte: 9}}] })
   { _id: ObjectId("63ac2abf4776694620256b0e"),
     name: 'Student 1',
@@ -144,6 +149,7 @@ Please connect to `mongo` console and use these commands:
     lucky_number: 8,
     birthday: { month: 4, day: 4, year: 2004 } }
 
+// Add a field to all the students, called `interests` with this values[ "code", "brunch", "MongoDH"]
 9.> db.students.updateMany({}, {$push: {interests: {$each: ["code", "brunch", "MongoDH"]}}})
   { acknowledged: true,
     insertedId: null,
@@ -151,6 +157,7 @@ Please connect to `mongo` console and use these commands:
     modifiedCount: 5,
     upsertedCount: 0 }
 
+// Add others interest
 10.> db.students.updateOne({name: "Student 1"}, {$addToSet: {interests: {$each: ["anotherInterest"]}} })
   { acknowledged: true,
     insertedId: null,
@@ -213,6 +220,7 @@ Please connect to `mongo` console and use these commands:
       birthday: { month: 5, day: 5, year: 2005 },
       interests: [ 'code', 'brunch', 'MongoDH', 'food' ] }
  
+// Add taxes as interest
 11.> db.students.updateOne({name: "Student 2"}, {$addToSet: {interests: {$each: ["taxes"]}}})
   { acknowledged: true,
     insertedId: null,
@@ -227,6 +235,7 @@ Please connect to `mongo` console and use these commands:
     birthday: { month: 2, day: 2, year: 2002 },
     interests: [ 'code', 'brunch', 'MongoDH', 'sports', 'taxes' ] }
 
+// Delete taxes from the inserted interest
 12.> db.students.updateOne({name: "Student 2"}, {$pop: {interests: 1} })
   { acknowledged: true,
     insertedId: null,
@@ -241,18 +250,24 @@ Please connect to `mongo` console and use these commands:
     birthday: { month: 2, day: 2, year: 2002 },
     interests: [ 'code', 'brunch', 'MongoDH', 'sports' ] }
 
+// Delete all students from California
 13.> db.students.deleteMany({home_state: "California"})
   { acknowledged: true, deletedCount: 2 }
 
+// Delete one student by name
 14.> db.students.deleteOne({name: "Student 5"})
   { acknowledged: true, deletedCount: 1 }
 
+// Delete 1 student with lucky_number >  5
 15.> db.students.deleteOne({lucky_number: {$gt: 5}})
 
+// Add number_of_belts too all students, and set as 0
 16.> db.students.updateMany({}, {$set: {number_of_belts: 0} })
 
+// Add +1 to number_of_belts if th student is from Washington
 17.> db.students.updateMany({home_state: "Washington"}, { $inc: {number_of_belts: 1}})
 
+// Change number_of_belts to belts_earned
 18.> db.students.updateMany( {}, { $rename: {"number_of_belts": "belts_earned"} })
   { acknowledged: true,
     insertedId: null,
@@ -260,6 +275,7 @@ Please connect to `mongo` console and use these commands:
     modifiedCount: 2,
     upsertedCount: 0 }
 
+// Remove lucky_number field
 19.> db.students.updateMany({},{"$unset":{"lucky_number":""}})
   { acknowledged: true,
     insertedId: null,
@@ -267,4 +283,5 @@ Please connect to `mongo` console and use these commands:
     modifiedCount: 2,
     upsertedCount: 0 }
 
+// Add a field `updated_on` with the current_date
 20.> db.students.updateMany({}, {$set: {updated_on: Date()} })

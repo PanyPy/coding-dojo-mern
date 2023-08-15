@@ -1,2 +1,2 @@
 - # Predict Hoisting
-run `node main.js`
+Predict the result. Run `node main.js`
