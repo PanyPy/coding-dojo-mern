@@ -27,7 +27,7 @@ const InputForm = (props) => {
 
   const validateSide = () => {
     const side = sideRef.current.value;
-    if(sideRef.current.value.trim() == "") {
+    if(sideRef.current.value.trim() === "") {
       setSideError("Side cannot be empty");
     } else if(side > 10 || side < 2) {
       setSideError("Side must be between 2-10");

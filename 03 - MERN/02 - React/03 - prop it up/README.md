@@ -1,15 +1,17 @@
 # Prop It Up
-Prototype `01 - assignment`
+Prototype `01 - assignment`.
 
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Install dependencies
-### `npm install`
 ## Available Scripts
 
 In the project directory, you can run:
+
+## Install dependencies
+### `npm install`
+
 ## Install dependencies
 ### `npm install`
 

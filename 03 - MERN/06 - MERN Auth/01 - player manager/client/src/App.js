@@ -8,32 +8,17 @@ import SignUp from './components/Authentication/SignUp';
 import Layout from './layouts/Layout';
 import axios from 'axios';
 
+axios.defaults.baseURL = "http://localhost:8000";
 axios.defaults.withCredentials = true;
 axios.interceptors.response.use((response) => {
-return response }, function (error) {
+  return response 
+}, function (error) {
   const originalRequest = error.config;
 
   if (error.response.status === 401) {
-    // navigate('/login');
     window.location.href = '/login';
   }
 
-  // if (error.response.status === 401 && !originalRequest._retry) {
-
-  //     originalRequest._retry = true;
-  //     const refreshToken = localStorageService.getRefreshToken();
-  //     return axios.post('/auth/token',
-  //         {
-  //             "refresh_token": refreshToken
-  //         })
-  //         .then(res => {
-  //             if (res.status === 201) {
-  //                 localStorageService.setToken(res.data);
-  //                 axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorageService.getAccessToken();
-  //                 return axios(originalRequest);
-  //             }
-  //         })
-  // }
   return Promise.reject(error);
 });
 

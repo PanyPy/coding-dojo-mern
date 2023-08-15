@@ -26,34 +26,34 @@ const pokemon = Object.freeze([
 
 let result;
 
-// Una serie de objetos Pokémon donde la identificación es divisible por 3
+// Get Pokemon where the id is divisible by 3.
 result = pokemon.filter(p => p.id%3 === 0);
 console.log("1", result);
 
-// una serie de objetos Pokémon que son del tipo "fuego"
+// Fire Pokemon.
 result = pokemon.filter(p => p.types.includes("fire"));
 console.log("2", result);
 
-// Una variedad de objetos Pokémon que tienen más de un tipo
+// Pokemon with multiple types.
 result = pokemon.filter(p => p.types.length > 1);
 console.log("3", result);
 
-// una matriz con solo los nombres de los Pokémon
+// Get Pokemon names.
 result = pokemon.map(p => p.name);
 console.log("4", result);
 
-// Una matriz con solo los nombres de Pokémon con una identificación mayor que 99
+// Get Pokemon with 'id > 99'.
 result = pokemon.filter(p => p.id > 99).map(p => p.name);
 console.log("5", result);
 
-// una matriz con solo los nombres del pokémon cuyo único tipo es veneno
+// Get Pokemon which only type is 'poison'.
 result = pokemon.filter(p => p.types.length === 1 && p.types.includes("poison"));
 console.log("6", result);
 
-// una matriz que contiene solo el primer tipo de todos los Pokémon cuyo segundo tipo es "volador"
+// Get only Pokemon where the second type is 'flying'.
 result = pokemon.filter(p => p.types[1] === "flying").map(p => p.types[0]);
 console.log("6", result);
 
-// un recuento de la cantidad de pokémon que son de tipo "normal"
+// Get the count of "normal" Pokemon.
 result = pokemon.filter(p => p.types.includes("normal")).length;
 console.log("6", result);

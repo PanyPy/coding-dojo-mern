@@ -30,7 +30,7 @@ class Sensei extends Ninja {
 
   speakWisdom() {
     super.drinkSake();
-    console.log("Lo que un programador puede hacer en un mes, dos programadores pueden hacerlo en dos meses.");
+    console.log("What one programmer can do in one month, two programmers can do in two months.");
   }
 }
 
@@ -42,7 +42,7 @@ class Sensei extends Ninja {
 // ejemplo de salida
 const superSensei = new Sensei("Master Splinter");
 superSensei.speakWisdom();
-// -> "Lo que un programador puede hacer en un mes, dos programadores pueden hacerlo en dos meses."
+// -> "What one programmer can do in one month, two programmers can do in two months."
 superSensei.showStats();
 // -> "Nombre: Master Splinter, Salud: 210, Velocidad: 10, Fuerza: 10"
 superSensei.health;

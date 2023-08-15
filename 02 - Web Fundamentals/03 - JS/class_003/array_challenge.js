@@ -1,50 +1,46 @@
-// 1. Siempre hambriento
-// Escribe una función a la que se le asigne un arreglo, y:
-//  - cada vez que el valor sea "comida" debería mostrar "delicioso"en la consola. 
-// Si "comida" no estaba presente en el arreglo, que la consola registre "Tengo hambre" una vez.
+// 1. Always hungry
+// Write a function. Given an array, iterate over it and print "delicious" each time the value is "food"
+// if "food is not present in the array, print "I'm hundry" once.
 function alwaysHungry(arr) {
-  const food_array = arr.filter(element => element === "comida");
+  const food_array = arr.filter(element => element === "food");
   if(food_array.length === 0) {
-    console.log("Tengo hambre");
+    console.log("I'm hungry");
     return;
   }
   food_array.forEach(element => {
-    console.log("delicioso");
+    console.log("Delicious");
   });
 }
 
-alwaysHungry([3.14, "comida", "pastel", true, "comida"]);
+alwaysHungry([3.14, "food", "pastel", true, "food"]);
 // esto debería mostrar "delicioso", "delicioso"
 alwaysHungry([4, 1, 5, 7, 2]);
 // esto debería mostrar "Tengo hambre"
 
 
-// 2. Filtro paso alto
-// Dado un arreglo y un valor cutoff, 
-// - devuelve un nuevo arreglo que contenga solo los valores mayores a cutoff.
+// 2. Filter values
+// Given an array and a "cutoff" value, return a new array with the values greater than "cutoff".
 function highPass(arr, cutoff) {
   return arr.filter(element => element > cutoff);
 }
 
-console.log(highPass([6, 8, 3, 10, -2, 5, 9], 5)); // esperamos de vuelta [6, 8, 10, 9]
+console.log(highPass([6, 8, 3, 10, -2, 5, 9], 5)); // expects [6, 8, 10, 9]
 
 
-// 3. Mejor que el promedio
-// Dado un arreglo de números, 
-//  - devuelve un recuento de cuántos de los números son mayores que el promedio.
+// 3. Better than average
+// Given an array of numbers, return the count of the numbers greater than the average.
 function betterThanAverage(arr) {
   const sum = arr.reduce((a,b) => a+b);
   const average = sum/arr.length;
 
   return arr.filter(element => element > average).length;
 }
-console.log(betterThanAverage([6, 8, 3, 10, -2, 5, 9])); // esperamos 4 de vuelta
+console.log(betterThanAverage([6, 8, 3, 10, -2, 5, 9])); // expects 4 as result
 
-// 4. Arreglo invertido
-// Escribe una función que invierta los valores de un arreglo y los devuelva.
+// 4. Inverted array
+// it could be as easy as
+// return arr.reverse()
 function reverse(arr) {
-  // As easy as
-  // return arr.reverse()
   const reversedArray = []
   for(let i = arr.length-1; i>=0; i--){
     reversedArray.push(arr[i]);
@@ -53,14 +49,11 @@ function reverse(arr) {
   return reversedArray;
 }
 
-console.log(reverse(["a", "b", "c", "d", "e"])); // esperamos de vuelta ["e", "d", "c", "b", "a"]
+console.log(reverse(["a", "b", "c", "d", "e"])); // expects ["e", "d", "c", "b", "a"]
 
-// 5. Arreglo de Fibonacci
-// Los números de Fibonacci se han estudiado durante años y aparecen a menudo en la naturaleza. 
-// Escribe una función que devuelva un arreglo de números de Fibonacci hasta una longitud dada n. 
-// Los números de Fibonacci se calculan sumando los dos últimos valores de la secuencia. 
-// Entonces, si el cuarto valor es 2 y el quinto valor es 3 entonces el siguiente valor en la secuencia es 5.
-
+// 5. Array of Fibonacci's
+// Return an array of fibonacci's with `n` as length.
+// Fibonacci's number are composed by the sum of the last 2 elements of the sequence.
 function fibonacciArray(n) {
   const fibArr = [0, 1];
   while (fibArr.length < 10) {

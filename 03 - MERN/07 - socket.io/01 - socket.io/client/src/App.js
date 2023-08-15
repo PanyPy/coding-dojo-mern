@@ -9,7 +9,7 @@ function App() {
   useEffect(() => {
     socket.on("new_message_from_server", data => setMessage(data));
     socket.emit('join_chat');
-  }, []);
+  }, [socket]);
 
   return (
     <div className="App">

@@ -12,26 +12,14 @@ module.exports.register = (request, response) => {
 };
 
 module.exports.login = (request, response) => {
-  // console.log('on login')
-  // console.log(request.body.email);
-  // console.log(request.body.password);
   User.findOne({ email: request.body.email })
     .then(user => {
       if (!user) return response.status(400).json({ msg: "User not exist" })
       
-      // console.log(user.password)
-      // console.log(request.body.password)
-      // console.log('else')
       bcrypt
         .compare(request.body.password, user.password,
           (err, data)  => {
-            console.log('check password')
-            // console.log(passwordIsValid)
             if (data) {
-              console.log('is valid')
-              console.log(data)
-              // return response.json({ msg: "is valid" });
-              // return  response.json({ msg: "invalid credentials" });
               const newJWT = jwt.sign(
                 {_id: user._id},
                 process.env.SECRET_KEY,

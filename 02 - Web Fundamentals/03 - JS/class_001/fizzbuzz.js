@@ -6,4 +6,4 @@ const printMessage = number => {
   (message !== "") ? console.log(message) : console.log(number);
 };
 
-[...Array(100).keys()].forEach(number => printMessage(number+1));
+[...Array(15).keys()].forEach(number => printMessage(number+1));

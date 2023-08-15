@@ -3,7 +3,6 @@ import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
 import Home from './components/Home';
 import Hello from './components/Hello';
 import Number from './components/Number';
-import HelloColor from './components/HelloColor';
 
 function App() {
   return (

@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import defaultAvatar from'../../assets/avatar.png';
-import { navBgColor } from '../Style';
 
 const IdeaCard = props => {
   const {_id, approvedAt, note, postedBy} = props.idea;
@@ -63,7 +62,7 @@ const IdeaCard = props => {
     <div className="row d-flex justify-content-center mt-3 mb-3" align="center">
       <div className="d-flex justify-content-start" style={{maxWidth: "540px", width: "80%"}}>
         <img src={postedBy?.photo || defaultAvatar} style={{height:"50px", width: "50px"}} className="img-fluid img-thumbnail m-2" alt="perfil"/>
-        <h4 className="my-auto"><Link style={{color:navBgColor, fontWeight:"bold"}} to={`/users/${postedBy?._id}`}>{`${postedBy?.alias.charAt(0).toUpperCase()+postedBy?.alias.slice(1)}`}</Link> says:</h4>
+        <h4 className="my-auto"><Link style={{color: "white", fontWeight: "bold"}} to={`/users/${postedBy?._id}`}>{`${postedBy?.alias.charAt(0).toUpperCase()+postedBy?.alias.slice(1)}`}</Link> says:</h4>
       </div>
 			<div>
       <div key={props.idea._id} className="card mb-1" style={{maxWidth: "540px", width: "80%"}}>
@@ -79,7 +78,7 @@ const IdeaCard = props => {
                 currentUser._id !== postedBy._id && <button onClick={() => likeIdea(true)} className="btn btn-sm btn-success">+ like</button>)
             : !approvedAt && <button onClick={approveIdea} className="btn btn-sm btn-warning">Aprobar idea</button>}
 
-          <h5 className="fs-6">{likes.length > 0 ? <Link style={{color:navBgColor, fontWeight:"bold"}}   to={`/bright_ideas/${_id}`}> {`${likes.length === 1 ? '1 person' : likes.length +' people'} likes this`} </Link> : approvedAt ? 'No likes, yet' : 'Not Approved, yet'} </h5>
+          <h5 className="fs-6">{likes.length > 0 ? <Link style={{color: "white", fontWeight:"bold"}}   to={`/bright_ideas/${_id}`}> {`${likes.length === 1 ? '1 person' : likes.length +' people'} likes this`} </Link> : approvedAt ? 'No likes, yet' : 'Not Approved, yet'} </h5>
           {(currentUser._id === postedBy._id || currentUser.role === 'Admin') && <button onClick={deleteIdea}  className="btn btn-sm btn-danger" sty>Delete</button>}
         </div>
         }</div>

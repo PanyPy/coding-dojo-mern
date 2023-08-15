@@ -6,12 +6,13 @@ See result -> `02 - result`.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Install dependencies
-### `npm install`
 
 ## Available Scripts
 
 In the project directory, you can run:
+
+## Install dependencies
+### `npm install`
 
 ### `npm start`
 

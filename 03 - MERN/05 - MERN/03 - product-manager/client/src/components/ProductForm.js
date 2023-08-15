@@ -21,7 +21,7 @@ const ProductForm = props => {
           setDescription(res.data.description);
         })
     }
-  }, [])
+  }, [props.id])
 
   const deleteProduct = () => {
     axios.delete('http://localhost:8000/api/product/' + props.id)

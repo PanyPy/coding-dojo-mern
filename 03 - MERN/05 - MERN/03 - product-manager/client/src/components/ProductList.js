@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
-export default props => {
+const ProductList = props => {
   const { removeFromDom } = props;
   const deleteProduct = (productId) => {
     axios.delete('http://localhost:8000/api/product/' + productId)
@@ -41,3 +41,4 @@ export default props => {
   )
 }
 
+export default ProductList;

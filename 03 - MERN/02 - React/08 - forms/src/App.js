@@ -4,7 +4,7 @@ import UserForm from './components/UserForm';
 import UserView from './components/UserView';
 
 function App() {
-  const [boxes, setBoxes] = useState([]);
+  const [user, setUser] = useState([]);
 
   return (
     <div className="App">
