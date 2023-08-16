@@ -1,0 +1,269 @@
+<html>
+  <head>
+    <title>NinjaMan</title>
+    <style type="text/css">
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .row {
+        line-height: 0;
+      }
+      .wall {
+        background-color: blue;
+        height: 40px;
+        width: 40px;
+        display: inline-block;
+      }
+      .blank {
+        background-color: black;
+        height: 40px;
+        width: 40px;
+        display: inline-block;
+      }
+      .ninjaman {
+        background-color: black;
+        height: 40px;
+        width: 40px;
+        display: inline-block;
+        background-image: url('ninja.gif');
+        background-size: contain;
+        position: absolute;
+        left: 40px;
+        top: 40px;
+      }
+
+      .bluey {
+        background-image: url('bluey.gif');
+      }
+      .pinky {
+        background-image: url('pinky.gif');
+      }
+      .pumpky {
+        background-image: url('pumpky.gif');
+      }
+      .red {
+        background-image: url('red.gif');
+      }
+      .scaredy {
+        background-image: url('scaredy.png');
+      }
+      .ghost {
+        background-color: black;
+        height: 40px;
+        width: 40px;
+        display: inline-block;
+        background-size: contain;
+        position: absolute;
+        left: 0px;
+        top: 0px;
+      }
+      .sushi {
+        background-image: url('sushi.png');
+      }
+      .onigiri {
+        background-image: url('onigiri.png');
+      }
+      .food {
+        background-color: black;
+        height: 40px;
+        width: 40px;
+        display: inline-block;
+        background-size: contain;
+      }
+    </style>
+  </head>
+  <body>
+    <div id='world'></div>
+    <div id='ninjaman' class='ninjaman'></div>
+    <div id='bluey' class='ghost bluey'></div>
+    <div id='pinky' class='ghost pinky'></div>
+    <div id='pumpky' class='ghost pumpky'></div>
+    <div id='red' class='ghost red'></div>
+    <div id='scaredy' class='ghost scaredy'></div>
+    <div>
+      <h3 id="game_status"></h3>
+      <h3>Life(s): <strong id="current_lifes">3</strong></h3>
+      <h2>Score</h2>
+      <h3>Sushi: <strong id="sushi_count">0</strong></h3>
+      <h3>Onigiri: <strong id="onigiri_count">0</strong></h3>
+    </div>
+  </body>
+    <script type="text/javascript">
+      const worldWidth = Math.floor(Math.random() * 15) + 10;
+      const worldPattern = {0: 'wall', 1: 'blank', 2: 'food sushi', 3: 'food onigiri'};
+	    const world = [
+        new Array(worldWidth).fill(0),
+        [0,1].concat(new Array(worldWidth-3).fill(1).map(w => Math.floor(Math.random() * 3) + 1)).concat([0]),
+        [0,1].concat(new Array(worldWidth-4).fill(1).map(w => (Math.floor(Math.random() * 4) + 1)-1)).concat([1,0]),
+        [0,1].concat(new Array(worldWidth-4).fill(1).map(w => (Math.floor(Math.random() * 4) + 1)-1)).concat([1,0]),
+        [0,1].concat(new Array(worldWidth-4).fill(1).map(w => (Math.floor(Math.random() * 4) + 1)-1)).concat([1,0]),
+        [0,1].concat(new Array(worldWidth-4).fill(1).map(w => (Math.floor(Math.random() * 4) + 1)-1)).concat([1,0]),
+        [0,1].concat(new Array(worldWidth-4).fill(1).map(w => (Math.floor(Math.random() * 4) + 1)-1)).concat([1,0]),
+        [0].concat(new Array(worldWidth-2).fill(1).map(w => Math.floor(Math.random() * 3) + 1)).concat([0]),
+        new Array(worldWidth).fill(0)
+        ];
+
+      let currentLifes = 3;
+      let isWinner = false;
+      let gameOver = false;
+      let ninjaman = {x: 1, y: 1};
+      let bluey = {x: worldWidth-2, y: 7};
+      let pinky = {x: worldWidth-3, y: 7};
+      let pumpky = {x: worldWidth-4, y: 7};
+      let red = {x: worldWidth-5, y: 7};
+      let scaredy = {x: worldWidth-6, y: 7};
+
+      let sushiCount = 0;
+      let onigiriCount = 0;
+
+      const drawWorld = () => {
+        let output = "";
+        world.forEach(col => {
+          output += "<div class='row'>";
+          col.forEach(col => {
+            output += `<div class='${worldPattern[col]}'></div>`;
+          });
+          output += "</div>";
+        });
+        document.getElementById('sushi_count').innerHTML = sushiCount;
+        document.getElementById('onigiri_count').innerHTML = onigiriCount;
+        document.getElementById('world').innerHTML = output;
+      };
+      const drawGhosts = () => {
+        document.getElementById('bluey').style.top = `${bluey.y*40}px`;
+        document.getElementById('bluey').style.left = `${bluey.x*40}px`;
+
+        document.getElementById('pinky').style.top = `${pinky.y*40}px`;
+        document.getElementById('pinky').style.left = `${pinky.x*40}px`;
+
+        document.getElementById('pumpky').style.top = `${pumpky.y*40}px`;
+        document.getElementById('pumpky').style.left = `${pumpky.x*40}px`;
+
+        document.getElementById('red').style.top = `${red.y*40}px`;
+        document.getElementById('red').style.left = `${red.x*40}px`;
+
+        document.getElementById('scaredy').style.top = `${scaredy.y*40}px`;
+        document.getElementById('scaredy').style.left = `${scaredy.x*40}px`;
+      }
+      const moveGhosts = () => {
+        moveGhost(bluey);
+        moveGhost(pinky);
+        moveGhost(pumpky);
+        moveGhost(red);
+        moveGhost(scaredy);
+      }
+      const moveGhost = (ghost) => {
+        const currentDistance = Math.sqrt(Math.pow((ninjaman.y - ghost.y),2) + Math.pow((ninjaman.x - ghost.x),2));
+        // 0 -> keep position, 1 -> move left, 2 -> move right, 3 -> move up, 4 -> move down
+        let nextX = ghost.x;
+        let nextY = ghost.y;
+        let nextDistance = currentDistance;
+
+        const leftDistance = Math.sqrt(Math.pow((ninjaman.y - ghost.y),2) + Math.pow((ninjaman.x - ghost.x-1),2));
+        if(leftDistance > nextDistance && world[ghost.y][ghost.x-1] !== 0) {
+          nextX = ghost.x-1;
+          nextY = ghost.y;
+          nextDistance = leftDistance;
+        }
+        
+        const rightDistance = Math.sqrt(Math.pow((ninjaman.y - ghost.y),2) + Math.pow((ninjaman.x - ghost.x+1),2));
+        if(rightDistance > nextDistance && world[ghost.y][ghost.x+1] !== 0) {
+          nextX = ghost.x+1;
+          nextY = ghost.y;
+          nextDistance = rightDistance;
+        }
+
+        const upDistance = Math.sqrt(Math.pow((ninjaman.y - ghost.y-1),2) + Math.pow((ninjaman.x - ghost.x),2));
+        if(upDistance > nextDistance && world[ghost.y-1][ghost.x] !== 0) {
+          nextX = ghost.x;
+          nextY = ghost.y-1;
+          nextDistance = upDistance;
+        }
+
+        const downDistance = Math.sqrt(Math.pow((ninjaman.y - ghost.y+1),2) + Math.pow((ninjaman.x - ghost.x),2));
+        if(downDistance > nextDistance && world[ghost.y+1][ghost.x] !== 0) {
+          nextX = ghost.x;
+          nextY = ghost.y+1;
+          nextDistance = downDistance;
+        }
+        ghost.x = nextX;
+        ghost.y = nextY;
+        drawGhosts();
+      };
+
+      drawWorld();
+      drawGhosts();
+
+      const drawNinjaman = () => {
+        document.getElementById('ninjaman').style.top = `${ninjaman.y*40}px`;
+        document.getElementById('ninjaman').style.left = `${ninjaman.x*40}px`;
+      }
+
+      const calculateScore = () => {
+        if(world[ninjaman.y][ninjaman.x] == 2) sushiCount++;
+        if(world[ninjaman.y][ninjaman.x] == 3) onigiriCount++;
+        world[ninjaman.y][ninjaman.x] = 1;
+      }
+
+      const checkLost = () => {
+        if((ninjaman.x === bluey.x && ninjaman.y === bluey.y ||
+            ninjaman.x === pinky.x && ninjaman.y === pinky.y ||
+            ninjaman.x === pumpky.x && ninjaman.y === pumpky.y ||
+            ninjaman.x === red.x && ninjaman.y === red.y ||
+            ninjaman.x === scaredy.x && ninjaman.y === scaredy.y)) {
+            currentLifes--;
+          if(currentLifes === 0) {
+            gameOver = true;
+            document.getElementById('game_status').innerHTML = 'GAME OVER!';
+          }else {
+            ninjaman = {x: 1, y: 1};
+            bluey = {x: worldWidth-2, y: 7};
+            pinky = {x: worldWidth-3, y: 7};
+            pumpky = {x: worldWidth-4, y: 7};
+            red = {x: worldWidth-5, y: 7};
+            scaredy = {x: worldWidth-6, y: 7};
+            drawNinjaman();
+            drawWorld();
+            drawGhosts();
+          }
+          document.getElementById('current_lifes').innerHTML = currentLifes;
+        }
+      }
+      const checkWin = () => {
+        if(world.flatMap(w => w).filter(w => w==2||w==3).length == 0) {
+          document.getElementById('game_status').innerHTML = 'WINNER!';
+          gameOver = true;
+        }
+      }
+
+      document.onkeydown = (e) => {
+        if (!gameOver) {
+          if(e.keyCode === 37 && world[ninjaman.y][ninjaman.x-1] != 0) {
+            ninjaman.x--; 
+          }
+          if(e.keyCode === 38 && world[ninjaman.y-1][ninjaman.x] != 0) {
+            ninjaman.y--; 
+          }
+          if(e.keyCode === 39 && world[ninjaman.y][ninjaman.x+1] != 0) {
+            ninjaman.x++; 
+          }
+          if(e.keyCode === 40 && world[ninjaman.y+1][ninjaman.x] != 0) {
+            ninjaman.y++; 
+          }
+          calculateScore();
+          drawNinjaman();
+          drawWorld();
+          checkLost();
+          checkWin();
+          if (!gameOver) {
+            moveGhosts();
+            drawGhosts();
+            checkLost();
+            checkWin();
+          }
+        }
+      };
+    </script>
+
+</html>
