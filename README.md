@@ -1,5 +1,6 @@
-# coding-dojo-mern
+# Coding Dojo - Software Development Online Part-Time Accelerated.
 This repository contains the assignments related to `Coding Dojo - MERN Bootcamp`
+
 
 ### Assigment List:
 - [Pre-Bootcamp Web Development](https://github.com/PanyPy/coding-dojo-mern/tree/main/01%20-%20Pre%20Bootcamp)
